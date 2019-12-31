@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Document</title>
+
+    <style>
+        blockquote {
+            color: #444;
+            font-style: italic;
+        }
+
+        blockquote::before,
+        blockquote::after {
+            color: #000;
+            font-size: 3em;
+        }
+
+        blockquote::before {
+            content: '\201C';
+        }
+
+        blockquote::after {
+            content: '\201d';
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!--ememplo para colocar aspas em citações com icone pronto do content-->
+
+    <blockquote>
+        O problema com citações na internet é que você não pode confirmar a sua veracidade.
+    </blockquote>
+
+    <script src="jquery.min.js"></script>
+</body>
+</html>

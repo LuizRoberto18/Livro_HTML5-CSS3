@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Fotos com caixa de texto trasparente com text</title>
+    <style>
+        figure{
+            position: relative;
+        }
+        img{
+            display: block;
+        }
+        figcaption{
+            bottom: 5px;
+            margin: 0 5px;
+            padding: 5px;
+            position: absolute;
+            width: 300px;
+        }
+        figcaption{
+            
+            background-color: #000;
+
+            /*a função rgba permite definir a opacidade de uma cor permitindo criar efeitos de transparencias utilizando apenas
+            a cor de fundo ou as bordas de um elemento
+            um ponto crucial  é q ela n aceia um valor hexadecimal comoo #000000 e sim 0,0,0 o quarto argumento da função é a opacidade 
+            desejada q vai de 0.0 a 0.1 */
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #FFf;
+        }
+    </style>
+</head>
+<body>
+    <figure>
+        <img src="images/sf.jpg" alt="a golden gate">
+        <figcaption>
+            San Francisco, California
+            <small>
+                Por Salin Virji
+                (http://www.flickr.com/photos/salim/402618629/)
+            </small>
+        </figcaption>
+    </figure>
+    <script src="jquery.min.js"></script>
+</body>
+</html>

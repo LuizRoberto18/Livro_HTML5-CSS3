@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>usando border radius para criar nuvens</title>
+
+    <style>
+        /*usando fontes em vez de icones como ICONIC , PICTOS, FONT AWESOME,FONTELLO,ICONMOON E SHIFTICONS*/
+        @font-face {
+            font-family: 'IconicFill';
+            src: url('iconic_Fill.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        div {
+            background-color: #000;
+            width: 50px;
+            height: 10px;
+            padding: 20px 50px;
+        }
+
+        .cloud {
+            background-color: #FFF;
+            border-radius: 48px;
+            display: inline-block;
+            height: 16px;
+            position: relative;
+            width: 48px;
+        }
+
+        .cloud::before {
+            background-color: red;
+            border-radius: 50%;
+            content: '';
+            height: 14px;
+            position: absolute;
+            right: 7px;
+            top: -6px;
+            width: 14px;
+        }
+
+        .cloud::before,
+        .cloud::after {
+            background-color: #fff;
+            border-radius: 50%;
+            content: '';
+            height: 14px;
+            position: absolute;
+            right: 7px;
+            top: -6px;
+            width: 14px;
+        }
+
+        .cloud::after {
+            background-color: #FFF;
+            height: 23px;
+            left: 7px;
+            right: auto;
+            top: -10px;
+            width: 23px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--criando uma nuvem com border radius, ::after e ::before-->
+    <div>
+        <span class="cloud"></span>
+    </div>
+
+    <script src="jquery.min.js"></script>
+</body>
+
+</html>

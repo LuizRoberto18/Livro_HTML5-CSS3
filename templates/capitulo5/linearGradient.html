@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Utilizando o linear-gradient</title>
+    <style>
+        div{
+            font-weight: bold;
+            height: 50px;
+            line-height: 25px;
+            margin-bottom: 10px;
+            padding: 5px;
+            text-align: center;
+            width: 220px;
+        }
+        .blue{
+            background-color: #4377fa;/* a cor superior do gradiente como fundo*/
+            background-image: linear-gradient(to bottom, #4377fa, #0537b7);
+        }
+        .reverse-blue{
+            background-image: linear-gradient(to bottom,#0537b7, #4377fa);
+        }
+        .omg-pink{
+            background-image: linear-gradient(to bottom left,#fc0050,#ff79a3);
+        }
+        .stops{
+            background-image: linear-gradient(to bottom, #f5b915 48%, #f2a31c 56%);
+        }
+    </style>
+</head>
+
+<body>
+    
+    <!--linear-gradient é uma função capaz de criar imagens com gradientes a partir de uma lista de cores e posições.
+    a sintax da função é bastante direta. primeiro informa-se a direção em que o gradiente será projetado usando o formato
+    TO [ direções ] sendo que DIREÇÕES deve ser um par das seguintes palavras chaves: top ou buttom e left ou right
+    caso queira ter mais controle pode ser informado um valor em graus [deg].
+    alem da direção é necessario informar pelo menos daus cores ou chamados color-stops, um par de cores eposição(em px ou %)
+    indicando em qual posicao a cor deverá começar ou terminar.
+-->
+    <div class="blue">
+        um gradiente zaul classico, utilizando 2 tons similares
+    </div>
+
+    <div class="reverse-blue">
+        uma inversa do gradiente azul
+    </div>
+
+    <div class="omg-pink">
+        combinando 'top' e 'right' para a direcao.
+    </div>
+
+    <div class="stops">
+        utilizando posições especificas para cores
+    </div>
+    <script src="jquery.min.js"></script>
+</body>
+</html>

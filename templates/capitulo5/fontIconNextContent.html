@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Fonte de icone para botao de formulario</title>
+</head>
+<style>
+
+      /*a regra @font-face é usada para definir novas familias de fontes que as nossas paginas usam e informa ao navegador e ao S.O do usuario
+        onde ta localizado o arquivo necessario para desenhar os traços da sua fonte.
+        se for definir fontes em italicou negrito precisa informar os valores corretos para as propriedades font-style e font-weigth de acordo com o uso
+        A propriedade SRC é responsavel por definir a localização da fonte:a função LOCAL informa um possivel nome para a fonte que será pesquisada
+        na maquina ou uma URL externa para a fonte ser baixada como rcurso adicional
+        */
+        @font-face {
+            font-family: 'Lobster';
+            font-style: normal;
+            font-weight: 400px;
+            src: local('Lobster'), url('lobster.woff') format('woff');
+        }
+
+        h1{
+            font-family: 'Lobster', cursive;
+        }
+
+       /*usando fontes em vez de icones como ICONIC , PICTOS, FONT AWESOME,FONTELLO,ICONMOON E SHIFTICONS*/
+       @font-face {
+            font-family: 'IconicFill';
+            src: url('iconic_Fill.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .icon-next::after {
+            content: '\2192';
+            font-family: 'IconicFill';
+            margin-left: 10px;
+        }
+
+        .icon-next {
+            color: blue;
+        }
+</style>
+<body>
+
+     <!--exemplos de fontes em vz de usar icnoes-->
+     <h1 class="icon-next">Avançar</h1>
+
+     <p class="icon-next">ir para o proxima pagina</p>
+
+    <script src="jquery.min.js"></script>
+</body>
+</html>

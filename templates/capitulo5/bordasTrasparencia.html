@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>transparencia e borda</title>
+    <style>
+        ul{
+            height: 35px;
+            list-style: none;
+            padding: 0;
+            width: 210px;
+        }
+        ul{
+            background-color: #ccc;
+            color: white;
+        }
+        ul{
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+        li{
+            float: left;
+            line-height: 35px;
+            font-size: 0.9em;
+            width: 50px;
+            text-align: center;
+        }
+        li{
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            border-right: 1px solid rgba(0, 0, 0, 0.3);
+        }
+        /*os seletores :first-child e :last-child são usados para remover a borda esquerda do primeiro item da lista e a 
+        borda direita do ultimo elemento, evitando que elas entrem em contato com a borda do ul*/
+        li:first-child{
+            border-left: none;
+        }
+        li:last-child{
+            border-right: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <ul>
+        <li>Um</li>
+        <li>Dois</li>
+        <li>Três</li>
+        <li>Quatro</li>
+    </ul>
+    <script src="jquery.min.js"></script>
+</body>
+</html>

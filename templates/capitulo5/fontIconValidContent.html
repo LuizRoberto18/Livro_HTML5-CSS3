@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Fonte de validacao de formulario</title>
+    <style>
+        @font-face {
+            font-family: 'IconicFill';
+            src: url('iconic_Fill.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .icon-ok {
+            color: #489D00;
+        }
+
+        .icon-ok::before {
+            content: '\2714';
+            font-family: 'IconicFill';
+            margin-left: 10px;
+        }
+
+        .icon-invalid {
+            color: #990000;
+        }
+
+        .icon-invalid::before {
+            content: '\2718';
+            font-family: 'IconicFill';
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <p class="icon-ok">E-mail valido com sucesso!</p>
+    <p class="icon-invalid">atencao preencha todos os campos</p>
+
+    <script src="jquery.min.js"></script>
+</body>
+
+</html>

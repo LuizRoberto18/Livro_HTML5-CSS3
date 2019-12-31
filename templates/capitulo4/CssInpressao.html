@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>configuracoes aplicadas na hora da inpressao</title>
+</head>
+<style>
+    
+        /*esse CSS só sera aplicado quando a pagina for inpresa*/
+        @media print {
+            * {
+                background-color: transparent !important;
+                color: #000 !important;
+                box-shadow: none !important;
+                color: #000 !important;
+                text-shadow: none !important;
+            }
+        }
+
+        a {
+            text-decoration: underline !important;
+        }
+
+        /*todos os links com href presente terão o seu caminho exibido entre parênteses ao seu lado.*/
+        
+            a[href]::after{
+              content: ' (' attr(href)')';
+             }
+    
+        /*links com URL como links q usam javaScript não deve receber o efeito a cima, logo 
+        precisamos removero pseudoelemento nesses casos usando um seletor mais espefifico q o anterior.
+        */
+        a[href^='javascript:']::after,
+        a[href^='#']::after {
+            content: '';
+        }
+
+        /*page-break-after e page-break-before definem se a quebra de linha deve ser antes ou dps do elemento
+         eles aceitam so always para força a quebra ou o avoid q indica que a quebra deve ser evitada*/
+        article {
+            page-break-after: always;
+        }
+
+        /* para ter um controle mais refinado na quebra de linha , definir um elemento vazio para posicionar as quebras
+        em pontos especificos do conteudo*/
+        .page-break {
+            display: none;
+        }
+
+        @media print {
+            .page-brea {
+                display: block;
+                page-break-before: always;
+            }
+
+            /*page-break-inside so aceita auto e avoid, podemos definir q o conteudo do paragrafo NÃO deve ser qquebrado 
+             entre duas paginas*/
+            p {
+                page-break-inside: avoid;
+            }
+        }
+
+</style>
+<body>
+    <script src="jquery.min.js"></script>
+</body>
+</html>
