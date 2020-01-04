@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Conpreenda o uso do position</title>
+    <style>
+        /*
+        Diferente do uso de margin, o elemento com position: relative não irá afetar a posição dos elementos presentes ao seu redor.
+        Por exemplo, o uso de top não empurra os elementos seguintes para baixo, mas posiciona a div por cima deles
+        */
+        .box{
+            background-color: papayawhip;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            top: 30px;
+            left: 5px;
+        }
+        /*
+        Já o valor absolute possui um comportamento mais complicado de se acostumar.
+        Elementos absolutamente posicionados são afetados pelas coordenadas das propriedades top, bottom e ans. No entanto, elas são aplicadas a partir do seu primeiro
+        elemento pai que que não tenha position: static - então, elementos absolutossão
+        relativos a um elemento pai. Caso nenhum elemento acima dele na hierarquia da sua
+        página atenda a este critério, o body será utilizado como referência.
+        */
+        h1{
+            background-color: lightblue;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+        }
+
+        header{
+            margin-top: 30px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <!--
+    Outra forma de controlar o posicionamento dos seus elementos é combinar o uso
+    da propriedade position e das propriedades de coordenadas top, right, bottom e
+    left. De acordo com o valor do position, as coordenadas são aplicadas de uma
+    forma diferente, o que muda toda a perspectiva de uso desse grupo de propriedades.
+    Dos quatro valores possíveis, o mais simples é o static. É o valor padrão para
+    todos os elementos, e a sua posição não é afetada por nenhuma das propriedades
+    de coordenadas, deixando que o navegador posicione o elemento no seu lugar de
+    origem.
+    O valor fixed remove o elemento da sua posição original
+    (reorganizando os elementos adjacentes, caso seja necessário) e fixa a sua posição na janela do navegador.
+    A posição do elemento é preservada conforme o usuário navega para cima e para
+    baixo com a rolagem da página, útil para caixas de mensagem que devem sobrepor o conteúdo 
+    ou elementos que devem acompanhar o uxo do usuário pela página, como uma caixa de links de navegação.
+    Os dois outros valores possíveis são os que mais confundem os desenvolvedores:
+    relative e absolute. Com o valor relative,  as coordenadas são aplicadas a partir do ponto original do elemento.
+    -->
+    <div class="box">Teste</div>
+    <p>Um paragrafo de texto logo a baixo</p>
+    <!--
+    Neste exemplo, o h1 está sendo posicionado de acordo com o body.
+    Mas se colocarmos ele dentro de outro elemento que esteja posicionado como relative,
+    por exemplo, a posição do h1 será afetada.
+    -->
+    <header>
+        <h1>Posicionado com "absolute"</h1>
+    </header>
+    
+    <!--
+    Esta peculiaridade do uso de absolute pode apresentar muitos problemas, mas
+    também adiciona muita exibilidade ao uso deste valor.
+    Como os elementos com absolute e fixed são removidos do uxo padrão da
+    página, eles não afetam a altura dos elementos que supostamente os contêm, o que
+    gera um problema similar ao uso de float, mas sem uma solução similar ao truque
+    do clearfix.
+    -->
+    <script src="jquery.min.js"></script>
+</body>
+</html>
