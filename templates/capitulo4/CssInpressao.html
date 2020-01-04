@@ -10,44 +10,61 @@
 <style>
     
         /*esse CSS só sera aplicado quando a pagina for inpresa*/
+        /*
+        Os navegadores nos permitem adicionar estilos especícos para quando uma página for impressa pelo usuário. Isto pode ser feito de duas maneiras: Com o atributo
+        media na tag link ou criando um bloco de CSS dentro da diretiva @media print, conforme os exemplos a seguir.
+        */
         @media print {
+            /*
+            O uso do !important é para garantir que esta regra sobrescreva qualquer outro seletor mais especíco do seu CSS padrão, para garantir que tudo se mantenha na
+            cor preta. Além disso, é recomendado remover qualquer outra propriedade de estilo visual, como box-shadow e text-shadow, além de revisar a cor das bordas utilizadas.
+            */
             * {
+                /*Não podemos depender da qualidade e da gama de cores disponíveis ao imprimir a página, pois não temos controle ou informações sobre a qualidade do hardware ou
+                da disponibilidade de tinta, então o recomendado é se manter no branco e preto de praxe. Então podemos remover todo tipo de cor ou imagem de fundo, e forçar a cor do nosso para texto, assim:
+                */
                 background-color: transparent !important;
                 color: #000 !important;
                 box-shadow: none !important;
                 color: #000 !important;
                 text-shadow: none !important;
             }
-        }
+            
+            /*
+            Com a ausência de cores, todos os seus links azuis, verdes ou vermelhos terão a mesma cor preta do seu conteúdo. Uma forma de diferenciar os links do texto
+            comum é sublinhando-os, caso você tenha retirado isto do estilo dos seus links
+            */
+            a {
+                text-decoration: underline !important;
+            }
 
-        a {
-            text-decoration: underline !important;
-        }
-
-        /*todos os links com href presente terão o seu caminho exibido entre parênteses ao seu lado.*/
-        
+            /*
+            Outra técnica recomendada para tratar links em casos de impressão é exibir o caminho que eles possuem logo após o seu texto. Isto é possível utilizando o pseudo
+            elemento ::after dos links, junto da função attr(), que permite ler os atributos de um elemento através de CSS.
+            Desta forma, todos os links com um href presente terão o seu caminho exibido entre parênteses ao seu lado. Links que não possuem uma url a seguir, como links
+            que utilizam funções de JavaScript não devem receber este efeito, então precisamos remover o pseudo elemento nestes casos, utilizando um seletor mais especíco que o anterior:
+            */
             a[href]::after{
-              content: ' (' attr(href)')';
-             }
-    
-        /*links com URL como links q usam javaScript não deve receber o efeito a cima, logo 
-        precisamos removero pseudoelemento nesses casos usando um seletor mais espefifico q o anterior.
-        */
-        a[href^='javascript:']::after,
-        a[href^='#']::after {
-            content: '';
-        }
+                content: ' (' attr(href)')';
+            }
+            a[href^='javascript:']::after,  a[href^='#']::after {
+                content: '';
+            }
 
-        /*page-break-after e page-break-before definem se a quebra de linha deve ser antes ou dps do elemento
-         eles aceitam so always para força a quebra ou o avoid q indica que a quebra deve ser evitada*/
-        article {
-            page-break-after: always;
-        }
+            /*
+            Atualmente, existem 3 propriedades disponíveis na maioria dos navegadores para isso: page-break-before, page-break-inside e page-break-after.
+            page-break-after e page-break-before definem se a quebra de linha deve ser antes ou dps do elemento
+            eles aceitam so always para força a quebra ou o avoid q indica que a quebra deve ser evitada
+            */
+            article {
+                page-break-after: always;
+            }
 
-        /* para ter um controle mais refinado na quebra de linha , definir um elemento vazio para posicionar as quebras
-        em pontos especificos do conteudo*/
-        .page-break {
-            display: none;
+            /* para ter um controle mais refinado na quebra de linha , definir um elemento vazio para posicionar as quebras
+            em pontos especificos do conteudo*/
+            .page-break {
+                display: none;
+            }
         }
 
         @media print {
@@ -62,7 +79,9 @@
                 page-break-inside: avoid;
             }
         }
-
+        /*Este tipo de controle é interessante para blocos de conteúdo extensos, como manuais, documentações ou mesmo e-books criados em HTML. Além destas 3 propriedades
+        existem outras duas, utilizadas para denir os limites de linhas que deve car em uma página ou em outra: orphans e widows. Mas infelizmente estas propriedades não possuem um suporte extenso pelos navegadores.
+        */
 </style>
 <body>
     <script src="jquery.min.js"></script>

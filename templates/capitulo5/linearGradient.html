@@ -16,6 +16,20 @@
             text-align: center;
             width: 220px;
         }
+        /*
+        O caso clássico da função são os gradientes verticais (geralmente utilizando top
+        como direção), partindo de um tom mais claro de uma cor para um tom mais escuro.
+        Uma regra simples para não se dar mal com gradientes é manter os tons de cores
+        bastante similares, criando uma leve ilusão de uma superfície arredondada e sob
+        o efeito de alguma fonte de luz. Para isto, tenha em mãos alguma ferramenta de
+        manipulação de cores para montar as combinações necessárias. Como no exemplo
+        anterior, o primeiro gradiente é composto de um tom especíco de azul e uma versão
+        mais escura dele mesmo.
+        Uma alternativa para garantir que os elementos com gradiente não quem sem
+        fundo algum em navegadores que não possuam suporte a função é xar a cor de
+        fundo do elemento para a cor predominante, desta forma o elemento terá um fundo
+        sólido caso o gradiente não seja exibido.
+        */
         .blue{
             background-color: #4377fa;/* a cor superior do gradiente como fundo*/
             background-image: linear-gradient(to bottom, #4377fa, #0537b7);
@@ -29,6 +43,14 @@
         .stops{
             background-image: linear-gradient(to bottom, #f5b915 48%, #f2a31c 56%);
         }
+        /*
+        Outra solução seria denir um background-image antes da declaração do gradiente,
+        contendo o caminho para uma imagem a ser utilizada caso a função não seja executada.
+        Apesar da vantagem de que a imagem só será acessada pelo navegador neste
+        cenário de falha, o esforço em manter as imagens junto dos gradientes não me parece
+        uma boa ideia, ainda mais com o aumento de uso de navegadores que suportam estes
+        gradientes, estas imagens se tornarão obsoletas logo.
+        */
     </style>
 </head>
 

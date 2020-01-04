@@ -1,87 +1,157 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="normalize.css">
     <title>Sombras e menus elegantes</title>
-    
+
     <style>
         .help {
-         background-color: #F1EFE6;
-         border: 1px solid #D3CDAE;
-         font-size: 0.9em;
-         padding: 10px;
-         position: relative;
-         width: 300px;
-         
-     }
-     .help{
-        box-shadow: -3px -3xp -3px #AAA;
-     }
-     .help::before {
-         border-color: transparent #D3CDAE transparent transparent;
-         border-style: solid;
-         border-width: 14px;
-         content: '';
-         left: -28px;
-         margin-top: -14px;
-         position: absolute;
-         top: 50%;
-     }
+            background-color: #F1EFE6;
+            border: 1px solid #D3CDAE;
+            font-size: 0.9em;
+            padding: 10px;
+            position: relative;
+            width: 300px;
 
-     input{
-        border: 1px solid #999;
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25) inset;
-        padding: 2px 5px;
-     }
-     input:focus{
-         border-color: #35861b;
-         /*usando a posicao 0 0 criamos um efeito de brilho em sombras externas*/
-         box-shadow: 0 0 5px #35861b, 2px 2px 2px rgba(0, 0, 0, 0.25) inset;
-         outline: none;
-     }
-     .nav{
-        background-color: #b9522d;
-        height: 30px;
-        list-style: none;
-        padding: 0;
-        width: 210px;
-     }
-     .nav li{
-         float: left;
-         font-weight: bold;
-         height: 30px;
-         line-height: 30px;
-         text-align: center;
-         width: 70px;
-     }
-     .nav a{
-         color: white;
-     }
-     .nav .current{
-         background-color: #a64a28;
-         box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-     }
- </style>
+        }
+
+        /*
+    Valores positivos movem a sombra para baixo ou para o lado esquerdo do elemento,
+    enquanto valores negativos tomam o caminho contrário. O ângulo da sombra
+    é crucial para criar o apelo visual que você quer, e um uso incorreto dos valores pode trazer visuais menos interessantes.
+    */
+        .help {
+            /*
+        a propriedade box-shadow permite adicionar multiplas sombras a elementos das suas paginas.existe dois tipos de sombras 
+        que podemos trabalhar com css: sombras externas e internas
+        */
+            box-shadow: 3px 3px 3px #AAA;
+        }
+
+        .help::before {
+            border-color: transparent #D3CDAE transparent transparent;
+            border-style: solid;
+            border-width: 14px;
+            content: '';
+            left: -28px;
+            margin-top: -14px;
+            position: absolute;
+            top: 50%;
+        }
+
+        input {
+            border: 1px solid #999;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25) inset;
+            padding: 2px 5px;
+        }
+
+        /*
+     Outra combinação interessante de campos de formulários e box-shadow é criar
+    uma sombra posicionada com 0 0, criando um brilho ao seu redor, quando o usuário
+    estiver com o cursor dentro do campo de texto. Alterar a cor da borda do campo para
+    a mesma da sombra ajuda a consolidar este efeito.
+    */
+        /*
+    Mas assim, a sombra que criamos anteriormente para o campo deixa de ser exibida,
+    já que sobrescrevemos a propriedade. A solução é repetir a sombra existente,
+    separando elas por vírgula. Assim é possível manter a consistência dos estados do
+    elemento
+    */
+        /*
+    Se utilizando a posição 0 0 criamos um efeito de brilho em sombras externas,
+    fazendo o mesmo com sombras internas é possível alcançar um efeito de profundidade
+    mais pesado, como se a superfície da sua página não fosse plana
+    */
+        input:focus {
+            border-color: #35861b;
+            /*usando a posicao 0 0 criamos um efeito de brilho em sombras externas*/
+            box-shadow: 0 0 5px #35861b, 2px 2px 2px rgba(0, 0, 0, 0.25) inset;
+            outline: none;
+        }
+
+        /*
+        Vamos alinhar os elementos horizontalmente utilizando float, além de denir
+        um tamanho padrão para cada link do menu e uma cor de fundo.
+        */
+        .nav {
+            background-color: #b9522d;
+            height: 30px;
+            list-style: none;
+            padding: 0;
+            width: 210px;
+        }
+
+        .nav li {
+            float: left;
+            font-weight: bold;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 70px;
+        }
+
+        .nav a {
+            color: white;
+        }
+
+        /*
+        Agora, utilizamos a mesma técnica do brilho ao redor da caixa de texto, só que utilizando o inset.
+        Além da mudança para um fundo mais escuro, a sombra contribui para diferenciar o link Home dos demais.
+        */
+        .nav .current {
+            background-color: #a64a28;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
 </head>
+
 <body>
-    <!--a propriedade box-shadow permite adicionar multiplas sombras a elementos das suas paginas.existe dois tipos de sombras 
-    que podemos trabalhar com css: sombras externas e internas-->
+    <!--
+    A propriedade box-shadow permite adicionar múltiplas sombras a elementos das
+    suas páginas. Existem dois tipos de sombras que podemos trabalhar com CSS: sombras
+    externas e internas. Sombras externas, que são o comportamento padrão do
+    box-shadow, são exibidas atrás do elemento, similar ao efeito que é chamado de drop
+    shadow em editores de imagens. As sombras internas, que são exibidas dentro das
+    bordas dos elementos e acima do seu fundo, se compara aos efeitos de inner shadow.
+    Para se criar uma sombra você precisa, primeiro, as coordenadas em que a sombra
+    cará posicionado. Em seguida você pode denir dois valores opcionais: a densidade
+    da sombra (geralmente chamado de blur), e um tamanho adicional para contrair
+    ou expandir o efeito da sombra. Apesar de opcional, sombras sem o seu blur
+    não passam de mais uma borda ao redor do elemento, então ele sempre está presente
+    nas suas sombras. Após todos os valores numéricos você deve informar uma cor -
+    que pode ser um valor hexadecimal ou uma chamada da função rgba.
+    Os efeitos de sombra são úteis para realçar a sobreposição de um elemento sobre
+    outro, o que cai como uma luva na caixa de ajuda que criamos Bastaa dicionar o uso do box-shadow na classe .help
+    -->
 
     <p class="help">
         Preencha o capmo com um email valido, assim poderemos entrar em contato com você para informar
         o resultado do nosso concurso.
     </p>
 
-   faça a sua pesquisa aqui: <input type="text">
+    <!--
+    Sombras internas podem ser utilizadas para criar um efeito de profundidade
+    dentro de um elemento. Com isto você pode criar a ilusão de algo “pressionado”,
+    como um botão de um formulário ou o item de menu que está selecionado, ou realçar a indicação que um elemento é um campo de texto, por exemplo.
+    -->
+    faça a sua pesquisa aqui: <input type="text">
 
-   <ul class="nav">
-       <li class="current"><a href="#">Home</a></li> 
-       <li><a href="#">Contato</a></li>
-       <li><a href="#">Sobre</a></li>
-   </ul>
+    <!--
+    Digamos que você está na página principal, e o menu deve ter uma indicação
+    visual que o link Home é o da página atual. Além de mudanças no estilo do texto e no
+    fundo do elemento, uma sombra interna pode ser utilizada para criar esta impressão.
+    Primeiro, precisamos de uma classe para indicar qual dos links é o atual:
+    -->
+    <ul class="nav">
+        <li class="current"><a href="#">Home</a></li>
+        <li><a href="#">Contato</a></li>
+        <li><a href="#">Sobre</a></li>
+    </ul>
     <script src="jquery.min.js"></script>
 </body>
+
 </html>

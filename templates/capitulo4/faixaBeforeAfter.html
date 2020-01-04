@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Section</title>
+</head>
+<style>
+       section {
+            border: 1px solid #000;
+            height: 100px;
+            margin: 40px auto;
+            width: 400px;
+        }
+
+        /*
+        Vamos começar a transformar o nosso h1 na faixa que queremos criar. Além da cor, vamos posicionar as laterais da faixa para fora da seção.
+        Agora, temos 10px de cada lado da faixa vazando pela seção, só precisamos criar o efeito da faixa contornando o section, utilizando pseudo elementos.       
+        */
+        h1 {
+            background-color: #990000;
+            color: #FFF;
+            font-size: 1.2em;
+            left: -10px;
+            padding: 5px 0;
+            position: relative;
+            text-align: center;
+            width: 420px;
+        }
+
+        /* 
+        Desenhamos um quadrado no canto da faixa com o pseudo elemento ’::before’.
+        Utilizando o position junto de coordenadas exatas com as propriedades left e top, conseguimos posicionar o elemento exatamente no canto superior
+        esquerdo da faixa e com uma borda de 5px, desenhamos um quadrado de 10px.
+        A propriedade content é utilizada para denir o conteúdo do elemento - já que não estamos adicionando o elemento pelo HTML - e neste caso não precisamos de
+        conteúdo algum. Para conseguir o efeito que queremos, precisamos transformar o quadrado que criamos em um triângulo, só precisamos de um ajuste nas cores das bordas.
+        */
+        h1::before {
+            border-color: transparent #7C0000 #7C0000 transparent;
+            border-style: solid;
+            border-width: 5px;
+            content: '';
+            left: 0;
+            position: absolute;
+            top: -10px;
+        }
+
+        /*Trocando algumas das cores para transparent, conseguimos desenhar um triângulo no lugar do quadrado vermelho. Para duplicar este efeito no outro lado da
+        faixa, utilizando o ::after, só precisamos inverter alguns detalhes - o que era feita com a propriedade left será feito com a right, e as posições da lista de cores também
+        precisa ser modicada, desta forma.
+        Feito! Criamos o efeito da faixa contornando a seção, sem precisar de novos elementos no HTML.
+        */
+        h1::after {
+            border-color: transparent transparent #7C0000 #7C0000;
+            border-style: solid;
+            border-width: 5px;
+            content: '';
+            right: 0;
+            position: absolute;
+            top: -10px;
+        }
+
+</style>
+<body>
+    <!--criando faixa decorativa-->
+    
+    <section>
+        <h1>um exemplo de pseudoelementos</h1>
+    </section>
+
+    <script src="jquery.min.js"></script>
+</body>
+</html>

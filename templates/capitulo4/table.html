@@ -51,6 +51,9 @@
         }
 
         /*ajustando cores na hr de emprimir a table*/
+        /*
+        Primeiro, vamos garantir que todo o conteúdo esteja na cor preta, e que a tabela ocupe o máximo de espaço possível.
+        */
         @media print {
             * {
                 color: #000 !important;
@@ -64,7 +67,10 @@
                 border-color: #000000;
             }
         }
-
+        /*
+        Também podemos trabalhar um pouco nos links existentes na página. Os da primeira coluna podem ser expandidos utilizando a técnica do pseudo elemento. Já
+        a coluna com os links de edição é dispensável para a nossa visão de impressão, por ser um elemento de navegação sem nenhum conteúdo relevante para este cenário, podemos então esconder esta coluna inteira.
+        */
         a::after {
             content: '('attr(href) ')';
         }
@@ -73,6 +79,10 @@
             display: none;
         }
 
+        /*
+        Também podemos trabalhar um pouco nos links existentes na página. Os da primeira coluna podem ser expandidos utilizando a técnica do pseudo elemento. Já
+        a coluna com os links de edição é dispensável para a nossa visão de impressão, por ser um elemento de navegação sem nenhum conteúdo relevante para este cenário, podemos então esconder esta coluna inteira.
+        */
         .expense::before {
             content: '- ';
         }

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Document</title>
+    <style>
+        /*
+        Vamos dedicar uma área de 600px para esta listagem, posicionando a informação
+        da data do post a direita do título, devidamente alinhado.
+        */ 
+        .posts{
+            width: 600px;
+        } 
+        h1{
+            float: left;
+            margin: 0 0 20px;
+        }
+        .timestamp{
+            background-color: #000;
+            color: #fff;
+            float: right;
+            font-size: 0.9em;
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+        /*
+        O título e a informação da data estão nos seus devidos lugares, mas a descrição
+        não deve car entre eles, e sim abaixo do título. Hora de aplicar a propriedade clear
+        então.
+        */
+        p{
+            clear: both;
+        }
+        /*
+        E o CSS que coloca a lista com outros posts, que esterá dentro do aside, no lado
+        direito, enquanto que a listagem dos posts que havíamos feito antes será exibida do
+        lado esquerdo
+        */
+        .posts{
+            float: left;
+            width: 600px;
+        }
+        aside{
+            background-color: #fffbe4;
+            box-decoration-break: 1px solid #c9bc8f;
+            float: right;
+            padding: 10px;
+            width: 200px;
+        }
+        .page{
+            padding: 10px;
+            margin: 0 auto;
+            width: 940px;
+        }
+        /*
+        agora vamos aplicar uma cor de fundo a nova div, que criamos,
+        que deverá preencher todo o fundo do conteúdo da página.
+        */
+        .page{
+            background-color: #e8e8e8;
+        }
+    </style>
+</head>
+<body>
+    
+    <!--
+    E da mesma forma que organizamos elementos em exemplo menores, podemos
+    organizar os principais elementos da página utilizando float.
+    -->
+
+    <!--
+    Com cada seção utuando para um lado, vamos colocar ambos elementos em
+    uma nova div, para denir uma largura limite para o conteúdo e centralizá-lo.
+    -->
+    <div class="page">
+        <section class="posts">
+            <article>
+                <h1><a href="#">Titulo do post #1</a></h1>
+                <span class="timestamp">3 semanas atras</span>
+
+                <p>
+                    uma breve descrição sobre o assunto abordado no post numero 1...
+                </p>
+            </article>
+
+            <article>
+                <h1><a href="#">Titulo do post #2</a></h1>
+                <span class="timestamp">3 semanas atras</span>
+
+                <p>
+                    uma breve descrição sobre o assunto abordado no post numero 2...
+                </p>
+            </article>
+        </section>
+        <!--
+        Vamos incrementar o nosso cenário. Hora de posicionar uma relação de links ao
+        lado direito da seção de posts. Como zemos na seção 2.6, a forma mais simples de
+        tratar este o posicionamento de elementos é utuando cada um - o conteúdo principal
+        e a barra lateral - para lados diferentes. Então, temos o HTML com a lista de
+        posts:
+        -->
+        <aside>
+            <h3>Veja outros posts</h3>
+            <ol>
+                <li><a href="#">#3</a></li>
+                <li><a href="#">#4</a></li>
+                <li><a href="#">#5</a></li>
+                <li><a href="#">#6</a></li>
+            </ol>
+        </aside>
+    </div>
+    <!--
+    Mas esse não é o resultado que queremos! Um elemento com float não contribui
+    com a altura do seu container, então elementos como o nosso .page aparentam
+    ter apenas alguns px de altura, devido ao seu padding, e o seu conteúdo com float
+    aparenta ter vazado do elemento. A solução para este comportamento estranho é
+    ter um elemento com clear logo após os elementos com float que causaram este
+    efeito.
+    Em exemplos anteriores isto foi feito utilizando um elemento vazio, mas esta
+    solução acaba sujando o nosso HTML com elementos vazios para ajustar casos como
+    esse. em floatSolucaoClearflix.html iremos conhecer uma solução mais adequada para este problema.
+    -->
+    <script src="jquery.min.js"></script>
+</body>
+</html>

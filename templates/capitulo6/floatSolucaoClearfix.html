@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>CLEARFIZ: uma classe obrigatoria em seus projetos</title>
+    <style>
+        /*CSS comentado em floatOrganizando.html*/
+
+        .posts{
+            width: 600px;
+        } 
+        h1{
+            float: left;
+            margin: 0 0 20px;
+        }
+        .timestamp{
+            background-color: #000;
+            color: #fff;
+            float: right;
+            font-size: 0.9em;
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+        p{
+            clear: both;
+        }
+      
+        .posts{
+            float: left;
+            width: 600px;
+        }
+        aside{
+            background-color: #fffbe4;
+            box-decoration-break: 1px solid #c9bc8f;
+            float: right;
+            padding: 10px;
+            width: 200px;
+        }
+        .page{
+            padding: 10px;
+            margin: 0 auto;
+            width: 940px;
+        }
+        .page{
+            background-color: #e8e8e8;
+        }
+
+        /*
+        Este uso especíco do valor table para a propriedade display serve para ajustar
+        bugs de margem entre o container e os elementos com float.
+        */
+        .clearfix::before, .clearfix::after{
+            content: '';
+            display: table;
+        }
+        /*
+        o uso de clear: both no ::after produz o mesmo resultado de se colocar
+        um elemento vazio após o conteúdo.
+        */
+        .clearfix::after{
+            clear: both;
+        }
+        /*
+        A propriedade zoom, é uma técnica especíca para versões antigas do Internet Explorer (6 e 7, para ser exato)
+        e pode ser ignorada caso você não precise trabalhar com estas versões deste navegador.
+        */
+        .clearfix{
+            *zoom: 1;
+        }
+    </style>
+</head>
+<body>
+   <!--HTML comentado em floatOrganizando.html-->
+    <!--
+    AQUI iremos conhecer uma solução mais adequada o problema da floatOrganizano.html.
+    -->
+
+    <!--
+    Este problema clássico de uso de float pode ser solucionado com um elemento vazio
+    após o conteúdo que utua, mas não precisamos adicionar tags vazias ao nosso
+    código, pois estes elementos adicionais já estão presentes na página - os pseudo elementos,
+    que foram apresentados na seção 4.3.
+    O chamado clearfix hack consiste em adicionar estilos especícos para os
+    pseudo elementos de um container que tenha elementos com float e precise ter
+    a sua altura adequada ao conteúdo.
+    -->
+
+    <!--
+    Sem precisar de novos elementos, podemos adicionar a classe clearfix na div
+    do exemplo anterior, assim solucionamos o problema da sua cor de fundo
+    -->
+   <div class="page clearfix">
+        <section class="posts">
+            <article>
+                <h1><a href="#">Titulo do post #1</a></h1>
+                <span class="timestamp">3 semanas atras</span>
+
+                <p>
+                    uma breve descrição sobre o assunto abordado no post numero 1...
+                </p>
+            </article>
+
+            <article>
+                <h1><a href="#">Titulo do post #2</a></h1>
+                <span class="timestamp">3 semanas atras</span>
+
+                <p>
+                    uma breve descrição sobre o assunto abordado no post numero 2...
+                </p>
+            </article>
+        </section>
+        <aside>
+            <h3>Veja outros posts</h3>
+            <ol>
+                <li><a href="#">#3</a></li>
+                <li><a href="#">#4</a></li>
+                <li><a href="#">#5</a></li>
+                <li><a href="#">#6</a></li>
+            </ol>
+        </aside>
+    </div>
+    <!--
+    Eventualmente, alguns desenvolvedores acabam utilizando algum outro nome
+    para a classe clearfix, como cf, reduzindo o nome para se escrever menos, ou
+    group, para expressar melhor o contexto de uso. Independente do nome, sempre
+    tenha ela nos seus projetos para tratar este problema clássico de uso da propriedade
+    float.
+    -->
+    <script src="jquery.min.js"></script>
+</body>
+</html>

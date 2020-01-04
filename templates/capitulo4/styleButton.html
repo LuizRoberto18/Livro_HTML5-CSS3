@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="normalize.css">
     <title>Estilo para botao grande e pequeno</title>
     <style>
+
+        /*
+        Podemos separar os aspectos destes elementos em 4 classes diferentes: uma para denir os estilos básicos de um botão, uma para as cores do botão principal, e outras
+        duas para controlar os tamanhos de cada um, assim:
+        */
         .button {
             background-color: #999999;
             color: white;
@@ -28,12 +33,22 @@
         .small-button {
             font-size: 0.9em;
         }
+        /*
+        Desta forma, botões em outras páginas e que possuam detalhes diferentes (como uma cor de fundo diferente, ou um ícone posicionado ao lado do texto) podem compartilhar
+        os estilos básicos de um botão e aplicar os seus pontos especícos com outras classes, como danger-button ou icon-button. Esta abordagem pode ser estendida
+        para menus de navegação ou conteúdos relacionados, ou uma relação de posts - o famoso media object dos exemplos tradicionais de OOCSS.
+        */
     </style>
 </head>
 
 <body>
 
-    <!--estilo criado do zero para butao grande e normal-->
+    <!--O OOCSS - Object Oriented CSS - propõe a separação da estrutura dos estilos
+    e os containers de seu conteúdo.
+    O objetivo é escrever um código mais fragmentado e reutilizável, onde diversas classes diferentes são utilizadas para compor o comportamento nal de um elemento,
+    independente da tag que ele possua ou o contexto que ele se encontre - dentro de uma lista, um formulário ou o cabeçalho da página.
+    Tome como exemplo os 2 botões a seguir.
+    -->
 
     <a href="#" class="button primary-button big-button">Enviar mensagem</a>
     <a href="#" class="button small-button">Cancelar</a>

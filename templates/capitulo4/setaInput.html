@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,10 @@
     <title>seta do lado esquerdo do input</title>
 
     <style>
+
+        /*
+        Podemos adicionar um pouco de estilo e transformar este parágrafo em uma caixa de ajuda.
+        */
            .help {
             background-color: #F1EFE6;
             border: 1px solid #D3CDAE;
@@ -17,6 +21,13 @@
             width: 300px;
         }
 
+        /*
+        Considerando que este elemento está ao lado de um campo de e-mail, podemos simular uma seta na lateral da caixa de ajuda apontando para o campo do formulário,
+        demonstrando a relação entre a mensagem e o campo que o usuário irá preencher. Utilizar o ::before para criar esta seta é uma ótima opção.
+        Utilizamos a mesma lógica das bordas da faixa que criamos anteriormente para transformar este elemento em um triângulo, e denimos a posição exata dele com
+        a combinação da propriedade position e das coordenadas com top e left. Mas parte do truque é a propriedade top com 50% e a margin-top negativa, o que força
+        o elemento a car sempre centralizado, independente da altura do parágrafo.
+        */
         .help::before {
             border-color: transparent #D3CDAE transparent transparent;
             border-style: solid;

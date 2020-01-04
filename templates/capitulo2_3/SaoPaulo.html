@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--usaremos o Normalize.css como um estilo de base para garantir uma consitencia melhor entre navegadores diferentes
+    e o prefixo -prefix-free que sera responsavel por tratar os prefixos prorietarios para as propriedades de css3 que ainda
+    não se tornaram um padrão entre navegadores -->
     <link rel="stylesheet" href="normalize.css">
     <title>O que mais gosto em São Paulo</title>
 
@@ -13,9 +16,13 @@
             background: #FFF1D6 url("images/noise.png");
             /*familia de fontes caso a primeira fonte listada nao esteja disponivel no S.O do usuario o navegador tentar´r a proxima e assim sucessivamente*/
             font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+            /*o line-height de 1.6, sem nenhuma medida especíca - como px ou em - indica para a altura das linhas carem com 160% da altura da fonte. Caso ela esteja
+            em 16px, o line-height será 25px. Caso a altura da fonte mude, a altura da linha de texto irá acompanhar essa mudança, respeitando a regra de sempre ser 1.6 da altura da fonte*/
             line-height: 1.6;
         }
-    
+        
+        /*A propriedade width xa a largura para 960px, adequando o conteúdo a telas de pelo menos 1024px de largura, como tablets e netbooks. A margem superior e
+        inferior está com 0, e as margens laterais em auto cuidam de centralizar o elemento na página*/
         .container {
             margin: 0 auto;
             width: 960px;
@@ -30,7 +37,10 @@
             background-color: #FFF;
             border-color: #ccc #999 #999 #ccc; 
             border: 1px solid #ccc;
+            /*o margin-bottom, coloca 20px abaixo de cada um dos elementos, adicionando espaço entre eles e ao término da lista.
+             Enquanto a propriedade margin-bottom adiciona o espaçamento do lado de fora dos elementos,*/
             margin-bottom: 20px;
+            /* a propriedade padding adiciona o espaçamento dentro dele, que no caso é de 10px em todos os lados*/
             padding: 10px;
         }
     
@@ -43,7 +53,7 @@
             color: #2C88A7;
             font-weight: bold;
         }
-    
+        
         article img{
             border: 1px solid #7E9F19;
             float: left;
@@ -66,6 +76,9 @@
             color: #FFF;
         }
     
+        /*Apesar de solucionar o problema de posições dentro da div sobre a Avenida Paulista, nos demais elementos
+        a imagem vaza para fora da div - um dos problemas clássicos de se usar a propriedade float. Vamos resolver isto adicionando um elemento vazio com a classe clear
+        logo após os parágrafos. Ele irá garantir que as imagens continuem dentro do seu respectivo div e que eles terão a altura adequada para conter todo o seu conteúdo.*/
         .clear{
             clear: both;
         }

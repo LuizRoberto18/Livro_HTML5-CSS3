@@ -7,19 +7,23 @@
     <link rel="stylesheet" href="normalize.css">
     <title>transparencia e borda</title>
     <style>
+
         ul{
             height: 35px;
             list-style: none;
             padding: 0;
             width: 210px;
         }
+
+        /*
+        Hora de adicionar cores. Iremos mudar a cor do texto para branco e aplicar um fundo cinza na lista.
+        */
         ul{
             background-color: #ccc;
             color: white;
         }
-        ul{
-            border: 1px solid rgba(0, 0, 0, 0.3);
-        }
+
+        /*Cada item da lista ocupará 50px, com o seu texto centralizado:*/
         li{
             float: left;
             line-height: 35px;
@@ -27,22 +31,42 @@
             width: 50px;
             text-align: center;
         }
+
+        /*
+        Agora que a lista possui uma cor sólida de fundo, podemos aplicar as bordas com transparência.
+         Iremos aplicar uma borda preta com apenas 30% de opacidade na lista, e uma sequência de bordas brancas e pretas entre os elementos.
+        */
+        ul{
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
         li{
             border-left: 1px solid rgba(255, 255, 255, 0.3);
             border-right: 1px solid rgba(0, 0, 0, 0.3);
         }
-        /*os seletores :first-child e :last-child são usados para remover a borda esquerda do primeiro item da lista e a 
-        borda direita do ultimo elemento, evitando que elas entrem em contato com a borda do ul*/
+        /*
+        Os seletores de :first-child e :last-child são utilizados para remover a borda esquerda do primeiro item da lista e a borda direita do último elemento, evitando que elas entrem em contato com a borda do ul.
+        É possível notar que a borda preta pode ser considerada como uma versão mais escura do fundo cinza, enquanto a borda branca se torna um cinza mais claro, de forma bastante sutil.
+        Se as bordas fossem sólidas, utilizando #000000 e #FFFFFF, o resultado seria bastante diferente e nada interessante.
+        */
         li:first-child{
             border-left: none;
         }
         li:last-child{
             border-right: none;
         }
+
+        /*
+        Você pode agora alterar a cor de fundo da lista, utilizando desde cores primárias como azul ou vermelho ou tons especícos de verde ou laranja.
+        O efeito que vimos no fundo cinza é replicável em diversos outros cenários e fundos
+        */
     </style>
 </head>
 <body>
     
+<!--
+    Uma outra aplicação interessante para o rgba é poder combinar tons de preto e branco para escurecer ou clarear outras cores, como criando divisórias entre seções ou elementos de um menu. 
+    A praticidade desta abordagem é não se preocupar com a cor de fundo por trás da borda ou fundo com transparência, permitindo utilizar o mesmo CSS em contextos e lugares diferentes
+-->
     <ul>
         <li>Um</li>
         <li>Dois</li>

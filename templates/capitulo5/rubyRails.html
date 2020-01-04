@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>conbinando propriedades</title>
+    <style>
+        /*
+        O CSS para estes texto será bem simples, similar o que já vimos anteriormente.
+        */
+        h1{
+            color: #bd2c00;
+            font-size: 1.2em;
+            margin: 0;
+        }
+        h2{
+            font-size: 1em;
+            margin: 5px 0;
+        }
+
+        /*Em seguida, o estado de Disponível pode ser baseado nos exercícios de
+        text-shadow que zemos, com a adição de um border-radius para arredondar os
+        cantos do elemento. Aplicamos um fundo verde, a cor branca e uma leve sombra no
+        texto, junto de alguns ajustes de espaçamento e tamanhos.
+        */
+        .available{
+            background-color: #6cc644;
+            border-radius: 3px;
+            color: white;
+            font-size: 0.8em;
+            font-weight: bold;
+            padding: 3px 7px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+        }
+        /*
+        Aplicamos um linear-gradient azul para o fundo do menu, junto de ajustes a espaçamento e posição:
+        */
+        ul{
+            background-color: #56b4ef;
+            background-image: linear-gradient(top, #56b4ef, #148eda);
+            float: left;
+            list-style: none;
+            margin: 10px 10px 0 0;
+            padding: 0;
+            width: 230px;
+        }
+
+        /*
+        Podemos utilizar a mesma cor em rgba usada no border-top dos links para
+        contornar o menu inteiro, além de adicionar um border-radius ao seu estilo.
+        */
+        ul{
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+
+        /*
+        E para os ícones, iremos reaproveitar a fonte Iconic e utilizar alguns de seus ícones no menu.
+        */
+        @font-face {
+            font-family: 'IconicFill';
+            src: url('iconic_fill.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        /*
+        Para apresentar os links de uma forma mais interessante, precisamos mudar a
+        sua cor e espaçar melhor os textos dos 3 itens - outro lugar onde o text-shadow cai
+        como uma luva
+        */
+        .icon{
+            color: #fff;
+            display: block;
+            font-size: 0.9em;
+            font-weight: bold;
+            padding: 5px;
+            text-decoration: none;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.9);
+        }
+        /*
+        O próximo passo é criar as bordas entre os links, aplicando bordas com rgba
+        utilizando preto e branco. Importante remover a borda superior do primeiro link e
+        a inferior do último, aproveitando as classes utilizadas para exibir os ícones.
+        */
+        .icon {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .icon.paper{
+            border-top: none;
+        }
+        .icon.package{
+            border-bottom: none;
+        }
+        
+
+        /**/
+        .icon::before{
+            font-family: 'IconicFill';
+            margin: 0px 5px;
+        }
+        .paper::before{
+            content:'\e00b' ;
+        }
+        .digital::before{
+            content: '\e044';
+        }
+        .package::before{
+            content: '\e022';
+        }
+
+        /*
+        O último detalhe do menu - uma indicação de :hover para os links. Podemos
+        aplicar um fundo preto com transparência no link, que irá aplicar um efeito em que
+        o fundo azul se tornará mais escuro
+        */
+        .icon:hover{
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        /*
+        O toque nal será o acabamento da seção inteira, identicada pela classe book.
+        Vamos seguir um estilo similar ao do menu - bordas arredondadas, fundo com gradiente
+        e uma borda um pouco mais escura que o fundo, além de xar a largura da
+        seção e espaçar um pouco o seu conteúdo.
+        */
+        .book{
+            background-color: #fafafa;
+            background-image: linear-gradient(#fafafa, #eee);
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 600px;
+        }
+
+        /*
+        Como o nosso menu está utilizando float, precisamos corrigir a altura da seção
+        para que todo os elementos quem devidamente contidos no article. Podemos
+        repetir o uso de um elemento vazio com a classe clear ao nal do conteúdo.
+        */
+        .clear{
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+    Passamos por diversas propriedades muito interessantes, que utilizadas sozinhas já
+    produzem resultados visuais sensacionais. Mas ao utilizar algumas (ou todas) delas
+    você consegue compor seções e componentes visualmente elegantes, e combinando
+    algumas das técnicas apresentadas neste capítulo junto de novos usos das propriedades
+    do CSS 3 conseguimos chegar ao seguinte resultado: uma seção para exibir o
+    livro Ruby on Rails: coloque sua aplicação web nos trilhos, disponibilizando opções de
+    compra e a situação do livro em estoque. Este será um ótimo exercício para combinar
+    algumas das coisas que aprendemos.
+    -->
+    <article class="book">
+        <header>
+            <h1>
+                Ruby on Rails: coloque sua aplicação web nos trilhos
+            </h1>
+            <h2>Vinicius Baggio</h2>
+            <span class="available">Disponivel</span>
+        </header>
+        <!--
+            Em seguida, criaremos o menu de compras, que combina diversos truques. O
+            HTML utilizado será uma simples lista não ordenada:
+        -->
+        <ul>
+            <li>
+                <a href="#" class="icon paper">
+                    Conprar a versão fisica
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon digital">
+                    Comprar versão digital
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon package">
+                    Conprar o pacote completo
+                </a>
+            </li>
+        </ul>
+        <!--
+        E o nosso menu está pronto, combinando bons usos de rgba, %linear-gradient, text-shadow e border-radius
+        A descrição do livro será apenas um parágrafo, sem estilo próprio algum, que
+        deverá ir logo após o HTML do menu, que devido a sua denição de float irá alinhar os 2 elementos horizontalmente.
+        -->
+        <p>
+            uma otima leitura para iniciantes de afins de se aventurar no ecossistema de Ruby
+        </p>
+        <div class="clear"></div>
+    </article>
+
+    <!--
+    Estes são alguns do exemplos do que é possível criar juntando gradientes, sombras
+    e similares. Combinações similares podem ser úteis para criar botões, cabeçalhos
+    e rodapés, barras laterais e diversos outros componentes de interface que você
+    precise nos seus projetos.
+    -->
+    <script src="jquery.min.js"></script>
+</body>
+</html>

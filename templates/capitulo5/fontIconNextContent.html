@@ -8,13 +8,14 @@
     <title>Fonte de icone para botao de formulario</title>
 </head>
 <style>
-
-      /*a regra @font-face é usada para definir novas familias de fontes que as nossas paginas usam e informa ao navegador e ao S.O do usuario
-        onde ta localizado o arquivo necessario para desenhar os traços da sua fonte.
-        se for definir fontes em italicou negrito precisa informar os valores corretos para as propriedades font-style e font-weigth de acordo com o uso
-        A propriedade SRC é responsavel por definir a localização da fonte:a função LOCAL informa um possivel nome para a fonte que será pesquisada
-        na maquina ou uma URL externa para a fonte ser baixada como rcurso adicional
-        */
+    
+    /*
+    Existem diversas fontes e ferramentas existentes para ajudar a compor grupos de ícones e adicionar eles as suas páginas sem muito trabalho. Algumas
+    das coleções de ícones mais interessantes por ai: Pictos (http://pictos.cc/), Font Awesome (http://fortawesome.github.com/Font-Awesome/) e Iconic (http://
+    somerandomdude.com/work/iconic/). 
+    E para compor ou pesquisar outras opções, existem opções como Fontello (http://fontello.com/), IcoMoon (http://keyamoon.
+    com/icomoon/#toHome) e o Shiicons (https://www.shiicons.com/).
+    */
         @font-face {
             font-family: 'Lobster';
             font-style: normal;
@@ -27,30 +28,45 @@
         }
 
        /*usando fontes em vez de icones como ICONIC , PICTOS, FONT AWESOME,FONTELLO,ICONMOON E SHIFTICONS*/
+       /*
+       Pegue a fonte Iconic, por exemplo, para testar um pouco.
+       Em vez de utilizar o CSS que o projeto já disponibiliza para você, vamos escrever
+       um exemplo do zero para ver o uso da fonte. Começando com a denição da fonte no CSS.
+       */
        @font-face {
             font-family: 'IconicFill';
             src: url('iconic_Fill.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }
-
+        
+        /*
+        Uma ótima forma de exibir tais ícones de fontes é utilizando a propriedade content dos pseudo elementos:
+        */
         .icon-next::after {
+            /*Utilizando um pseudo elemento e um símbolo Unicode, o ícone de uma echa para a direita é exibido ao lado do título. Qualquer mudança dos estilos do texto do
+            elemento ou do seu pseudo elemento irá afetar o ícone, adequando cores e tamanhos.
+            */
             content: '\2192';
             font-family: 'IconicFill';
             margin-left: 10px;
         }
 
+        /*Podemos trocar a cor de todos os ícones associados a um h1 */
         .icon-next {
             color: blue;
         }
 </style>
 <body>
 
-     <!--exemplos de fontes em vz de usar icnoes-->
+     <!--Então, adicionamos um elemento e uma classe para denir qual ícone será exibido -->
      <h1 class="icon-next">Avançar</h1>
-
+    
+     <!--e até utilizar o ícone em outro elemento, como um p, adicionando o seguinte código:-->
      <p class="icon-next">ir para o proxima pagina</p>
-
+     
+    <!--Desta forma conseguimos posicionar e estilizar todos os ícones disponíveis no Iconic facilmente com CSS.-->
+   
     <script src="jquery.min.js"></script>
-</body>
+</by>
 </html>

@@ -8,6 +8,9 @@
     <title>Icone pronto com content</title>
     <style>
         
+        /*
+        Para posicionar uma indicação próxima ao texto, basta o uso do ::before junto de um símbolo Unicode que representa uma mão apontando o dedo.
+        */
         .tip::before {
             content: '\261E';
             margin-right: 10px;
@@ -17,7 +20,8 @@
 </head>
 <body>
 
-    <!--exemplo de icone pronto com content-->
+    <!-- Mas também podemos adicionar ícones e outros tipos de elementos decorativos para complementar o nosso conteúdo. Exemplo,
+    em um texto informativo não tão relacionado, conseguimos adicionar a indicação de uma mão apontando para o texto-->
 
     <p class="tip">você sabia que...</p>
 

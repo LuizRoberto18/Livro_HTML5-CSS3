@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>A propriedade Display</title>
+
+    <style>
+        /*
+        Uma forma de se testar o comportamento dos elementos é simplesmente adicionar
+        uma cor de fundo para cada um deles e observar o espaço preenchido.
+        */
+        span{
+            display: inline-block;
+        }
+        p{
+        background-color: limegreen;
+        }
+        span{
+            background-color: lightblue;
+        }
+        /*
+        Além dos valores padrões, existem duas outras possibilidades bastante úteis para a propriedade display: o none e o inline-block.
+        */
+        /*
+        O none faz com que o elemento e todo o seu conteúdo sumam da página, como se
+        não estivessem presentes no HTML, enquanto o inline-block mistura o comportamento
+        dos valores block e inline - os elementos não geram quebras, mas possuem
+        as dimensões equivalentes ao seu comportamento da propriedade block.
+        */
+
+    </style>
+</head>
+<body>
+    
+    <!--A propriedade display determina como um elemento será exibido pelo navegador.
+    Elementos de texto, como a, span e small, possuem um valor inline, que permite
+    que elementos seguintes se mantenham na mesma linha que o atual, e não são afetados
+    por propriedades como height e width. Containers como div, p, section e similares
+    são tratados como blocos - com o valor padrão de block - quebrando o uxo dos
+    elementos em uma nova linha e ocupando a largura máxima que lhe é permitida. Elementos
+    de uma tabela, como td%, thead e tr possuem seus próprios valores
+    de display, como table-cell e table-rowmas se comportam como elementos de
+    bloco. 
+    -->
+    <span>inline</span>
+    <span>inline</span>
+    <p>block</p>
+
+    <!--
+    Ele seria uma solução perfeita para muitos problemas se não fosse um detalhe: o espaço entre
+    os elementos no HTML impacta na exibição deles. 
+    -->
+    <!--
+    Caso exista uma quebra de linha ou um espaço entre os elementos no HTML,
+    a renderização deles com inline-block irá possuir um espaço em branco - o que
+    muitas vezes não é o desejado.
+    -->
+    <span>inline-block</span>
+    <span>inline-block</span>
+    <span>inline-block</span>
+    <br>
+    <span>inline-block</span><span>inline-block</span>
+
+    <script src="jquery.min.js"></script>
+</body>
+</html>

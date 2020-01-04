@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Document</title>
+    <style>
+        /*
+        a regra @font-face é usada para definir novas familias de fontes que as nossas paginas usam e informa ao navegador e ao S.O do usuario
+        onde ta localizado o arquivo necessario para desenhar os traços da sua fonte.
+        se for definir fontes em italicou negrito precisa informar os valores corretos para as propriedades font-style e font-weigth de acordo com o uso
+        */
+        @font-face {
+            font-family: 'Lobster';
+            font-style: normal;
+            font-weight: 400px;
+            /*
+             A propriedade SRC é responsavel por definir a localização da fonte:a função LOCAL informa um possivel nome para a fonte que será pesquisada
+            na maquina ou uma URL externa para a fonte ser baixada como rcurso adicional
+            */
+            src: local('Lobster'), url('lobster.woff') format('woff');
+        }
+        /*
+        Caso a nossa fonte Lobster não esteja disponível, por um problema de rede ou a falta de um arquivo compatível, uma fonte alternativa como cursive deve ser de-
+        nida para ser aplicada ao elemento. A compatibilidade de formatos diferentes é um ponto irritante: existem diversos formatos de fontes diferentes que você pode precisar
+        dependendo dos navegadores que você pretende atender: .eot para algumas versões do Internet Explorer e .svg, .ttf ou novamente o .eot para o navegador
+        nativo do Android, ou versões desatualizadas do Safari, tanto em desktops como no iOS. O formato tomado como padrão, suportado por todos os navegadores modernos, é o woff.
+        */
+    </style>
+</head>
+<body>
+    <h1>
+        trabalhando com @font-face
+    </h1>
+    <script src="jquery.min.js"></script>
+</body>
+</html>
