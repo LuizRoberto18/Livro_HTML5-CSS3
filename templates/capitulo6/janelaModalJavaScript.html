@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <script src="/prefixfree.min.js"></script>
+    <title>Crie sua propria janela Modal</title>
+    <style>
+        /*CSS comentado em janelaModal.html*/
+        .notice {
+            background-color: #fff;
+            border: 1px solid #000;
+            height: 130px;
+            padding: 10px;
+            width: 380px;
+            margin: -75px 0 0 -200px;
+        }
+
+        .notice {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+        }
+
+        .notice {
+            z-index: 1;
+        }
+
+        .notice,
+        .overlay {
+            display: none;
+        }
+
+        /*
+        Como o .notice já possui uma denição de position, fica fácil posicionar o botão de "Fechar” em relação a posição do modal 
+        com outra combinação de position + coordenadas.E o que resta é adicionar o evento de click deste botão para esconder
+        os elementos do modal.
+        */
+        .notice .close{
+            background-color: #ff1a2d;
+            color: #fff;
+            padding: 5px;
+            position: absolute;
+            right: -25px;
+            top: -12px;
+        }
+    </style>
+   
+</head>
+
+<body>
+
+    <!--HTML comentado em janelaModal.html-->
+    <!--
+    Com este código pronto, podemos começar a adicionar o comportamento em JavaScript para exibir ou esconder o modal.
+    Vamos esconder os 2 elementos e adicionar um link para exibir o modal quando necessário.
+    -->
+    <a id='show-modal' href='javascript:;'>Exibir modal</a>
+
+    <div class="notice">
+        <h1>Atenção</h1>
+        <p>aqui você pode exibir alguma mensageminportante, que ela ira sobrepor todo conteudo do site</p>
+        <!--
+        Agora que conseguimos exibir o modal, precisamos escondê-lo também, certo?
+        Para isso, vamos precisar de um botão de fechar, dentro do modal, que pode ser
+        posicionado por cima do canto superior direito do elemento, quase que saindo do
+        espaço do modal. Seu HTML é um simples link:
+        -->
+        <a href='javascript:;' class="close">Fechar</a>
+    </div>
+    <div class="overlay"></div>
+
+    <!--O caminho src usado no livro esta desatualizado tem q usar o novo do bootstrap4-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+
+        <!--
+        Estas linhas de JavaScript são responsáveis pelo seguinte comportamento:
+        iremos associar uma função ao evento de click de qualquer elemento que atenda o
+        seletor #show-modal (o botão, neste caso). Esta função irá selecionar os elementos
+        do nosso modal e irá modicar a propriedade display para exibir eles para o usuário.
+        -->
+        <script>
+            
+            $('#show-modal').on('click', function () {
+                $('.overlay, .notice').show();
+            });
+            /*Vamos associar o evento de click de dois elementos - o .overlay e o .close, separando os dois seletores com uma vírgula - e o evento irá esconder tanto o .overlay
+            quanto o .notice. Assim, caso o usuário clique fora da janela ela será fechada, e esta
+            ação não cará reduzida para apenas o pouco espaço ocupado pelo botão. E é possível ir além: associar o evento de keydown do teclado do seu usuário para esconder
+            o modal caso ele tecle ESC. Tente adicionar este comportamento e veja como ca o
+            resultado nal!
+            */
+            $('.overlay, .close').on('click', function() {
+                $('.overlay, .notice').hide();
+            });
+        </script>
+</body>
+
+</html>

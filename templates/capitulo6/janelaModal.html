@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Crie sua propria janela Modal</title>
+    <style>
+        /*
+        Vamos denir alguns estilos básicos para denir o formato da caixa que irá conter este conteúdo,
+        para garantir que a div tenha uma altura e largura xa, que irá facilitar seu posicionamento.
+        */
+        /*
+        Neste caso, é indicado utilizar o valor fixed e não o absolute - apesar da posição do elemento ser a mesma, 
+        a vantagem de se utilizar o fixed é que caso a sua página exiba a barra de rolagem vertical,
+        o modal irá acompanhar a rolagem para cima e para baixo do usuário. Com as porcentagens no top e left,
+        o canto superior direito do modal está posicionado no centro da página, mas precisamos alinhar o elemento todo. Como
+        xamos a largura e altura do modal, ca simples corrigir isto utilizando margens negativas, nalizando o CSS para esta parte do modal.
+        */
+        .notice{
+            background-color: #fff;
+            border: 1px solid #000;
+            height: 130px;
+            padding: 10px;
+            width: 380px;
+            /*
+            A propriedade margin é aplicada de metade da altura do elemento (150px) no
+            topo e metade da largura (400px) na margem esquerda (margin-left) do elemento,
+            onde ambos os valores são negativos, para o elemento retroceder alguns px de volta
+            para o centro da página.
+            */
+            margin: -75px 0 0 -200px;
+        }
+        /*
+        Hora de posicionar o modal no centro da página, combinando a propriedade position com as coordenadas top e left.
+        */
+        .notice{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+        }
+        /*Podemos fazer um css para nosso overlay*/
+        .overlay{
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+        }
+        /*
+        Podemos corrigir isto de duas maneiras - ou colocamos o código HTML da div antes do HTML do nosso modal, 
+        ou podemos controlar a ordem das posições com a propriedade z-index, da seguinte forma:
+        */
+        /*
+        Elementos sem a propriedade z-index sempre carão atrás daqueles que possuem a propriedade, e entre os que possuem o z-index denido,
+        os que tiverem um valor maior serão posicionados a frente dos de valor menor.
+        Elementos em contextos diferentes - como dois elementos com position: absolute,
+        porém contidos em elementos diferentes com position: relative - não compartilham da mesma sequência de aplicação do z-index,
+        então é bem fácil se complicar com a ordem dos elementos quando se possui uma página muito complexa.
+        Para casos assim, é indicado que os elementos do seu modal sejam os últimos elementos de todo o seu HTML.
+        Além de evitar problemas com a mudança de position de outros elementos, você garante que ele estará por cima do seu conteúdo de acordo
+        com a ordem padrão dos elementos.
+        */
+        .notice{
+            /*
+            A propriedade z-index redene a ordem dos elementos que estão posicionados
+            no mesmo contexto (no caso dos nossos elementos, estão posicionados de acordo com o body)
+            */
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!--
+    Janelas modais são um elementos recorrentes em diversos sites e são bons exemplos de aplicação de position.
+    Vamos começar com uma div e um parágrafo, que serão o conteúdo do nosso modal.
+    -->
+    <div class="notice">
+        <h1>Atenção</h1>
+        <p>aqui você pode exibir alguma mensageminportante, que ela ira sobrepor todo conteudo do site</p>
+    </div>
+    <!--
+    Outro comportamento que sempre acompanha as janelas modais é uma sobreposição de cor -
+    geralmente preta ou branca e com uma certa opacidade, entre o conteúdo da sua página e a sua janela modal.
+    Com a sobreposição de cores, é possível enfatizar a diferença do modal em relação ao resto da página,
+    e até mesmo impedir que o usuário interaja com o conteúdo. Isto costuma ser feito com outro elemento xo,
+    ocupando todo o espaço útil do navegador, que costumamos chamar de overlay.
+    -->
+    <!--Mas a nossa implementação levantou um problema - o .overlay cou por cima do .notice.
+    Como os elementos com position: fixed ou position: absolute são empilhados por cima da página, a ordem do posicionamento é dada pela ordem dos
+    elementos no HTML - então como .overlay aparece após o .notice, ele será posicionado por cima de tudo
+    -->
+
+    <div class="overlay"></div>
+    <script src="jquery.min.js">
+         /*javaScript feito e comentado em janelaModalJavaScript.html*/
+    </script>
+</body>
+</html>
