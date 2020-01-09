@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Elementos flexiveiws</title>
+    <style>
+
+        /*
+        Neste exemplo temos duas novidades: o valor flexbox (que será substituído por lex no futuro),
+        que marca o container como um elemento ﬂexível, e a propriedade flex, onde você pode deﬁnir diversos comportamentos diferentes para o elemento
+        */
+        .flexbox{
+            display: flex;
+            height: 60px;
+            width: 300px
+        }
+        /*
+        Neste caso, o valor auto deﬁne que ele irá ocupar o máximo de espaço possível,distribuindo os 300px entre cada um deles. 
+        Mas isto pode ser alcançado utilizandoporcentagens na propriedade width e ﬂutuando os elementos, certo? É aqui que mora a diferença entre estes métodos. 
+        Como não estamos deﬁnindolarguras ﬁxas para os elementos ﬂexíveis, podemos adicionar mais conteúdo coma classe
+        .box que a largura dos elementos será ajustada pelo navegador - você nãoprecisa pular no CSS e recalcular as larguras dos elementos
+        */
+        .box{
+            color:  #fff;
+            display: block;
+            flex: auto;
+            font-weight: bold;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        /* 
+        Esse container terá 300px de largura, então cada um dos elementos irá ocupar 100px
+        */
+        .one{
+            background-color: #8820dd;
+        }
+        .two{
+            background-color: #2bb15a;
+        }
+        .three{
+            background-color: #755322;
+        }
+        .four{
+            background-color: #02a3a3;
+        }
+        .five{
+            background-color: #c6463d;
+        }
+    </style>
+</head>
+<body>
+
+    <!--
+    Um módulo bastante interessante do CSS3 é o CSS Flexible Box Layout Module ,que introduz diversas propriedades novas para deﬁnir regras de posicionamento ealinhamento relativas, 
+    onde os elementos presentes em um container flex serão or-ganizados automaticamente pelo navegador, de acordo com as deﬁnições feitas, 
+    sem a necessidade de se ﬁxar tamanhos ou forçar alinhamentos com float ou position.
+    -->
+    <!-- 
+    Tudo se baseia no novo valor da propriedade display:flex.
+    Com ele, a gamade propriedades do flexbox estarão disponíveis para os elementos contidos dentro deste container.
+    Como, por exemplo, forçar uma orientação vertical ou horizontal,sem a necessidade de aplicar a propriedade float nos elementos.
+    Ou, então, distri-buir a largura do elemento entre seus ﬁlhos, alterar a ordem de exibição ou forçar um espaçamento 
+    igual para todos.Mas como nem tudo são ﬂores, a especiﬁcação deste módulo sofreu uma rees-crita pesada e ainda está em constante atualização. 
+    A versão antiga da especiﬁcação foi implementada em diversos navegadores, mas o novo formato ainda não está ma-duro o suﬁciente para se utilizar em seus projetos. 
+    Mas eu sugiro que você ﬁque de olho nas novidades relacionada sao flexbox ,jáquelogomaiselepoderáseradotadoem seus projetos.
+    Vamos dar uma olhada de perto no que é possível fazer como flexbox: primeiro, vamos precisar de um container com  elementos, onde eles irão preencher toda alargura disponível igualmente:
+    -->
+    <div class="flexbox">
+        <span class="one box">1</span>
+        <span class="two box">2</span>
+        <span class="three box">3</span>
+        <span class="four box">4</span>
+        <span class="five box">5</span>
+    </div>
+    <!--
+        Não ter que ajustar as larguras ou deﬁnir novas classes é grande vantagem - os elementos ﬂexíveis podem ser criados dinamicamente,
+        variando de 3 a 10, e a responsabilidade de organizá-los e deﬁnir os seus tamanhos ﬁca a cargo do navegador.
+    -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+</html>

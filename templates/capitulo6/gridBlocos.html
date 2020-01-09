@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>posicionando elementos com css3</title>
+
+    <style>
+        /*esse e o novo css q utiluza as novas regras para colunas*/
+        p{
+            column-count: 3;
+            column-gap: 10px;
+            column-rule: 1px solid #666;
+            font-size: 0.9em;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--
+    Algumas adições do CSS3 permitem que problemas antigos sejam solucionados com códigos novos, o que é razão de festa para qualquer desenvolvedor.
+    Mas atenção, pois os módulos do CSS3 relacionados a posição e controle deconteúdo não estão tão maduros quanto as de propriedades como box-shadow ou border-image,
+    então é importante conferir a situação do suporte dos navegadores a essas novidades.
+    -->
+
+    <!-- 
+    Distribuir um bloco de conteúdo-textos,links ou imagens-emd iversas colunas ﬁcou muito fácil. 
+    Em vez de dividir o conteúdo manualmente em elementos separa-dos e se preocupar com a largura e espaçamento entre eles
+    você pode simplesmentedeixar esta tarefa para o navegador, com a propriedade column-count, 
+    onde vocêdeﬁne a quantidade de colunas que o seu elemento terá, e ﬁca a cargo do navegadordistribuir o conteúdo e dimensionar cada uma,
+    independente do tamanho do seuelemento.Além disso, existem propriedades adicionais para deﬁnir novos detalhes docomportamento das suas colunas, como
+    column-gap (espaçamento entre colunas),column-rule (a borda que dividirá as colunas) ou column-fill(a regra utilizadapara distribuir o conteúdo entre as colunas).
+    Um exemplo a seguir demonstra quão simples é dividir um pedaço de conteúdo entre colunas
+    -->
+    <p>Firefly é uma série de ficção científica criada pelo escritor/diretorJoss Whedon, criador de Buffy: A Caça
+        Vampiros, Angel e Dollhouse,com sua companhia de produção Mutant Enemy Productions. Seu ambientefuturista
+        naturalista, modelado a partir de temas dos filmes de Westerntradicionais, apresenta um cenário de ficção
+        científica atípico para anarrativa. Whedon também trabalhou como produtor executivo,junto com Tim Minear</p>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

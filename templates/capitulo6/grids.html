@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <script src="/prefixfree.min.js"></script>
+    <title>Grids: um padrão de estrutura para suas paginas</title>
+    <style>
+        .container {
+            width: 610px;
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        .column {
+            margin-right: 20px;
+            float: left;
+        }
+
+        .column:last-child {
+            margin-right: 0;
+        }
+
+        .six-columns {
+            /*largura equivalentes a 6 colunas de 50px mais 20px de espaçamentos entre cada um delas*/
+            width: 400px;
+        }
+
+        .three-columns {
+            box-sizing: border-box;
+            width: 190px;
+            /*um pouco de css so para diferenciar esta coluna das outras*/
+            background-color: #fffbe4;
+            border: 1px solid #c9bc8f;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--
+        Grids são um sistema de regras para deﬁnir um número de colunas disponíveis nosseus layouts para deﬁnir a largura e 
+        espaçamento dos seus elementos de acordo com o tamanho padrão e espaçamentoentreumacolunaeoutra.
+        Você pode utilizar qualquer tipo de grid,de 12 ou 6 colunas,de larguras ﬁxas ou relativas,com espaçamento entre colunas ou não
+    -->
+
+    <!--
+        Pegaremos o seguinte grid como exemplo:  colunas de 50px cada, com 10px de margens laterais.
+        Podemos deﬁnir que a coluna principal de conteúdo irá ocupar o espaço de 6 colunas do grid, enquanto a barra lateral ocupará 3 colunas.
+    -->
+    <div class="container">
+        <article class="column six-columns">
+            <p>Grimm é uma série de televisão americana de drama policial e fantasia criada por Stephen Carpenter, Jim
+                Kouf e David Greenwalt produzida pela Universal Television para a NBC. A série foi ao ar de 28 de
+                outubro de 2011 a 31 de março de 2017, por 123 episódios, ao longo de seis temporadas.[1] A narrativa
+                da série segue o detetive de Homicídios de Portland, Nick Burkhardt (David Giuntoli), que descobre que
+                ele é um Grimm, o mais recente de uma linha de guardiões que juram manter o equilíbrio entre a
+                humanidade e criaturas mitológicas, conhecidas como Wesen.
+
+                Grimm foi originalmente desenvolvida para a CBS, mas os planos foram cancelados devido à greve dos
+                roteiristas. Em janeiro de 2011, a NBC optou pela série. Foi descrita como "um drama policial - com uma
+                reviravolta ... um projeto sombrio e fantástico sobre um mundo em que existem personagens inspirados
+                nos contos dos irmãos Grimm"[2] embora as histórias e personagens que inspiram o show também sejam
+                extraídos de outras fontes. A série inicialmente recebeu críticas mistas dos críticos, embora a
+                recepção tenha se tornado mais favorável ao longo da série. A sexta e última temporada de Grimm estreou
+                em 7 de janeiro de 2017 e terminou em 31 de março de 2017.
+
+                No Brasil a série foi exibida pelo Universal Channel e pelo Syfy, onde segue em exibição. Em 4 entre 5
+                de fevereiro de 2013 começou a ser exibida pela RecordTV nas segundas, quartas e quintas, às 11h30min
+                da noite. Em Portugal foi transmitida pelo Syfy e TVI.</p>
+        </article>
+        <aside class="column three-columns">
+            <tr>
+                <th>item do menu</th>
+                <th>item do menu</th>
+                <th>item do menu</th>
+                <th>item do menu</th>
+            </tr>
+        </aside>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
