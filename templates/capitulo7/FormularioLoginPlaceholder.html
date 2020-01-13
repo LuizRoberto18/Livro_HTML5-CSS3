@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title> A flexibilidade do atributo placeholder</title>
+    <style>
+        /*
+        Nosso primeiro passo aplicando o CSS neste formulário será esconder o label
+        de cada campo e empilhar o campo de “Usuário” junto ao de “Senha”, empurrando
+        o botão para baixo:
+        */
+        label{
+            display: none;
+        }
+        input{
+            display: block;
+        }
+        button{
+            margin-top: 5px;
+        }
+        /*E com um pouco mais de código, embelezamos o formulário com bordas e sombras.*/
+        input{
+            border-radius: 3px 3px 0 0;
+            border: 1px solid #999;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+            font-size: 0.8em;
+            padding: 5px;
+        }
+        input[type='password']{
+            border-radius: 0 0 3px 3px;
+            border-top: none;
+        }
+        /*
+        Bastante simples, certo? Arredondamos apenas os cantos superiores (deixando
+        os dois últimos valores do border-radius com o valor 0), aplicamos uma borda
+        cinza e uma leve sombra utilizando rgba. E para o campo de “Senha”, invertemos os
+        valores do border-radius.
+        */
+
+        /*
+        Podemos alterar o estilo do texto dos campos, mas o mesmo não é aplicado ao
+        texto exibido do placeholder. Para isso, precisamos utilizar um pseudo-seletor especíco para este texto. 
+        Devido a problemas de compatibilidades, navegadores diferentes dão um nome diferente para o mesmo seletor,
+        então precisamos especicar todos eles, assim:
+        */
+        /*
+        O -webkit-input-placeholder é direcionado para os navegadores baseados no WebKit - como Safari e o Google Chrome.
+        */
+        ::-webkit-input-placeholder{
+            color: red;
+        }
+        /*
+        ado para os navegadores baseados no WebKit - como Safari e o Google Chrome. Os demais, -moz-placeholder e
+        -ms-input-placeholder, atendem o Mozilla Firefox e o Internet Explorer 10, respectivamente.
+        Cada navegador processará um seletor diferente, e precisamos repetir as propriedades entre eles.
+        */
+        ::-moz-placeholder{
+            color: red;
+        }
+        :-ms-input-placeholder{
+            color: red;
+        }
+        /*
+        Apesar da repetição, ganhamos total controle sobre o estilo do placeholder - podemos alterar cores, tamanhos e fundos.
+         Por exemplo, podemos deixar o texto digitado no campo em negrito e o texto do placeholder em itálico e cinza, ajudando a
+        diferenciar entre um campo preenchido e um campo em branco
+        */
+        input{
+            font-weight: bold;
+        }
+        ::-webkit-input-placeholder{
+            color: #666;
+            font-style: italic;
+            font-weight: normal;
+        }
+        :-moz-placeholder{
+            color: #666;
+            font-style: italic;
+            font-weight: normal;
+        }
+        :-ms-input-placeholder{
+            color: #666;
+            font-style: italic;
+            font-weight: normal;
+        }
+        /*Assim, Partindo do nosso javaScript, o nosso CSS poderá aplicar regras especícas para páginas com a classe
+        no-placeholder. Neste caso podemos exibir o label de cada campo e fazer outras
+        mudanças no estilo do formulário.
+        */
+        .no-placeholder input{
+            border-radius: 3px;
+            border-top: 1px solid #999;
+        }
+        .no-placeholder label{
+            display: block;
+        }
+        /*
+        Assim, o formulário se mantém funcional quando o navegador usado não tiver
+        suporte ao que precisamos e os navegadores atuais terão o comportamento padrão
+        que desenvolvemos anteriormente.
+        */
+    </style>
+
+</head>
+<body>
+
+    <!--
+    O atributo placeholder foi originalmente criado para exibir frases de ajuda
+    e exemplos de formatos dentro dos próprios campos criados com a tag
+    input
+    -->
+
+    <!--
+    O HTML para este formulário é bastante simples - não vamos precisar de parágrafos para cada campo,
+    mas vamos ter o label de cada campo presente, mesmo considerando que não vamos exibir eles na interface nal:
+    -->
+
+    <!--
+    Existem duas razões para termos o label do campo de “Usuário” e de “Senha":
+    primeiro, precisamos disponibilizar tais elementos para auxiliar leitores de telas para
+    decientes visuais a navegarem pela nossa página. E segundo, caso o navegador que
+    for utilizado para acessar a página não carregue todo o nosso CSS ou não possua
+    suporte ao atributo placeholder, o formulário ainda será funcional para quem o
+    utilizar.
+    -->
+    <form method="POST" action=''>
+    
+            <label for="username">Usuario</label>
+            <input type="text" id="username" placeholder="Usuario">
+            <label for="password">Senha</label>
+            <input type="password" id="password" placeholder="Senha">
+            
+        <button>Entrar no site</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+
+    <!-- Detectando funcionalidades com JavaScript e ajustando o estilo -->
+
+    <!--Para identicar que o navegador em uso não possui suporte ao placeholder
+    vamos utilizar um pouco de JavaScript, mas, em vez de tentar identicar em qual
+    navegador estamos fazendo malabarismos com o navigator.userAgent, será mais
+    seguro testar se o navegador possui realmente suporte a funcionalidade que precisamos.
+        Eis o por quê: podemos escrever um código especíco para atender o
+        Internet Explorer, mas isso não atingirá versões antigas do Mozilla Firefox, por
+        exemplo. Detectando a funcionalidade em vez que possuir uma lista de versões
+        de navegadores que precisam de uma correção garante um código mais simples
+        e conciso.
+    Vamos escrever um teste especíco para o atributo placeholder e caso você precise
+     testar outras funcionalidades que possam não existir talvez será necessário usar
+    alguma outra lógica especíca. A biblioteca 10.4 Modernizr foi criada para agrupar
+    diversos testes de funcionalidades diferentes para facilitar a nossa vida. Mas neste
+    caso vamos escrever o código nós mesmos, por ser um teste tão simples.
+    -->
+    <script>
+        /*
+        A função é bem simples: caso a propriedade placeholder exista nos elementos input e textarea, ela retornará true.
+        Caso algum dos elementos (ou ambos) não possua o atributo, ela retornará false.
+        O teste não servirá de nada se não o utilizarmos, certo? Vamos fazer o seguinte: caso o navegador não passe no teste (retornando false a chamada desta função), 
+        vamos adicionar uma classe ao elemento html (o elemento raiz da página) para, através do CSS, aplicarmos um estilo diferente
+        para navegadores sem suporte ao placeholder.
+        Utilizando o jQuery, biblioteca mais usada para trabalhar com o DOM, camos com o seguinte código:
+        */
+        jQuery(function($){
+                function supportsPlaceholder() {
+                    return 'placeholder' in document.createElement('input') &&
+                           'placeholder' in document.createElement('textarea');
+                }
+                if (!supportsPlaceholder()) {
+                    $('html').addClass('no-placeholder');
+                }
+            }
+        );
+    </script>
+</body>
+</html>

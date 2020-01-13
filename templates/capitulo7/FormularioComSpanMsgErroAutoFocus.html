@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Exibição de mensagens de ajuda</title>
+    <style>
+        /*
+       Codigo do css do Formulario comentado em FormularioComSpan.html
+        */
+
+        label {
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: bold;
+            width: 90px;
+        }
+
+        input,
+        textarea {
+            display: inline-block;
+            width: 200px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        input,
+        textarea {
+            border: 1px solid #ccc;
+            box-shadow: inset 2px 2px 2px #eee;
+            font-size: 0.9em;
+            padding: 2px 5px;
+        }
+
+        .hint{
+            background-color: #fffbe4;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            font-size: 0.8em;
+            margin-left: 20px;
+            padding: 3px;
+        }
+      
+        .hint{
+            display: none;
+        }
+        input:focus + .hint, textarea:focus + .hint{
+            display: inline-block;
+        }
+        /*
+        O valor block na propriedade display vai garantir que o elemento que abaixo
+        dos demais, do label, input e o outro span. Os valores de margem posicionam este
+        span abaixo da caixa de texto, com 5px de distância entre eles. A cor vermelha e o
+        texto em itálico (graças ao font-style), garantem um certo destaque em relação ao
+        outros elementos que estão em tons de preto e cinza: NaN;Dessa maneira, 
+        bastaria que quando a validação fosse feita, seja no lado do servidor ou no lado do cliente, 
+        houvesse uma regra para deixar esse novo span visível quando acontece o erro de validação
+        */
+      .error{
+          color: red;
+          display: block;
+          font-size: 0.8em;
+          font-style: italic;
+          margin: 5px 0 0 90px;
+      }
+    </style>
+
+</head>
+
+<body>
+    <!--Codigo do Formulario comentado em FormularioComSpan.html-->
+
+    <!--
+    Com nossas mensagens de ajuda em posição, temos um outro tipo de mensagem
+    a exibir no formulário: mensagens de erros e de validações. Não pretendo entrar
+    em detalhes em como tais validações devem ser feitas (seja utilizando JavaScript no
+    navegador ou processando isso com a sua linguagem de programação preferida como
+    Ruby, Python ou Java em um servidor externo), mas sempre devemos guardar um
+    espaço para tais mensagens e denir um estilo especíco para elas.
+    Vamos simular que o formulário foi enviado sem o campo “E-mail” e devemos
+    noticar o usuário disso. Começamos com um elemento span com a classe error,
+    para identicar exatamente quais elementos span estão exibindo tais mensagens.
+    -->
+    <form method="POST" action=''>
+        <p>
+            <label for="email">E-mail:</label>
+            <!--
+            Podemos adicionar mais um truque ao formulário: o autofocus. Ao carregar a página,
+            o cursor irá focar o campo de “E-mail” para facilitar o trabalho dos usuários que
+            querem utilizar o formulário. A implementação é bem simples, bastando adicionar
+            um atributo ao campo:
+            -->
+            <input type="email" id="email" name="enail" autofocus>
+            <!--
+            Sim, apenas autofocus. Não precisamos adicionar nenhum valor ao atributo
+            para ativá-lo. Dessa forma o campo de “E-mail” receberá o foco da janela e a mensagem de ajuda também aparecerá ao carregar a página do formulário.
+            Apenas alguns pontos importantes que se deve prestar atenção ao usar este atributo: caso você tenha mais de um campo com autofocus, eventualmente o último
+            campo presente no HTML receberá o foco. E caso seja necessário descer a barra de
+            rolagem da janela para chegar ao campo, o navegador irá descer a página para exibir
+            o campo focado, pulando qualquer conteúdo anterior ao formulário.
+            -->
+            <span class="hint">por exemplo, seunome@dominio.com</span>
+            <span class="error"> Preenchao seu e-mail corretamente</span>
+        </p>
+        <p>
+            <label for="subject">Assunto:</label>
+            <input type="text" id="subject">
+            <span class="hint">nos diga qual e o seu problema ou ideia</span>
+            <span class="error"> Preenchao com um assunto corretamente</span>
+        </p>
+        <p>
+            <label for="content">Mensagem:</label>
+            <textarea id="content"></textarea>
+            <span class="hint">escreva a sua mensagem em ate 500 caracteres</span>
+            <span class="error"> Preenchao seu texto corretamente</span>
+        </p>
+        <button>Enviar mensagem</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

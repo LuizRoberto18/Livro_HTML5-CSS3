@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Exibição de mensagens de ajuda</title>
+    <style>
+        /*
+       Codigo do css do Formulario comentado em FormularioContato.html
+        */
+
+        label {
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: bold;
+            width: 90px;
+        }
+
+        input,
+        textarea {
+            display: inline-block;
+            width: 200px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        input,
+        textarea {
+            border: 1px solid #ccc;
+            box-shadow: inset 2px 2px 2px #eee;
+            font-size: 0.9em;
+            padding: 2px 5px;
+        }
+
+        /*
+        Agora, precisamos adicionar um estilo a essas mensagens para elas se destacarem na interface, chamando a atenção dos usuários.
+        */
+        .hint{
+            background-color: #fffbe4;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            font-size: 0.8em;
+            margin-left: 20px;
+            padding: 3px;
+        }
+        /*
+        Um tom de amarelo como fundo, bordas levemente arredondadas (usando a propriedade border-radius) 
+        e uma sombra (com a utilização de rgba em vez de uma cor sólida, reduzindo bastante a opacidade da cor preta).
+        Além disso, uma margem de 20px para distanciar um pouco as mensagens dos seus campos
+        */
+
+        /*
+        De certa forma, exibir todas essas mensagens ao mesmo tempo pode atrair atenção demais e atrapalhar o uxo de uso do formulário.
+         Por quê não exibir as mensagens conforme o formulário for preenchido? Isto é possível usando apenas CSS!
+        Primeiro, vamos esconder todas as mensagens alterando a propriedade display de inline-block para none.
+         Com todas elas escondidas, vamos exibir apenas a mensagem relacionada ao campo que esteja em foco - ao selecionar o campo de “E-mail”,
+        por exemplo, a mensagem de ajuda para este campo será exibida, quando se passar
+        para o próximo campo, “Assunto”, a mensagem do campo de “E-mail” desaparece
+        novamente e a mensagem para o campo de “Assunto” é exibida.
+        Para isso utilizaremos o seletor de sibling (irmão, no caso), usando o símbolo de adição +:
+        */
+        .hint{
+            display: none;
+        }
+        input:focus + .hint, textarea:focus + .hint{
+            display: inline-block;
+        }
+        /*O seletor pode ser lido como “um elemento com a classe hint, posicionado exatamente depois de um elemento input 
+        (ou textarea) que esteja em foco no navegador”.
+         Assim, as mensagens se tornarão visíveis (tendo a propriedade display sobrescrita de none para inline-block)
+          conforme os campos recebem e perdem o foco.
+        */
+    </style>
+
+</head>
+
+<body>
+    <!--Codigo do Formulario comentado em FormularioContato.html-->
+
+    <!--
+    Agora que temos os campos devidamente estilizados, podemos adicionar um novo
+    elemento para mostrar uma descrição dos campos, para que auxilie as pessoas que
+    forem preencher o formulário - mensagens de ajuda, que podem explicar a respeito
+    de limite de caracteres, formatos especícos e detalhes extras a respeito do seu formulário.
+    Para representar essas mensagens, usaremos a tag span com a classe hint.
+    -->
+    <form method="POST" action=''>
+
+        <p>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="enail">
+            <span class="hint">por exemplo, seunome@dominio.com</span>
+        </p>
+        <p>
+            <label for="subject">Assunto:</label>
+            <input type="text" id="subject">
+            <span class="hint">nos diga qual e o seu problema ou ideia</span>
+        </p>
+        <p>
+            <label for="content">Mensagem:</label>
+            <textarea id="content"></textarea>
+            <span class="hint">escreva a sua mensagem em ate 500 caracteres</span>
+        </p>
+        <button>Enviar mensagem</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

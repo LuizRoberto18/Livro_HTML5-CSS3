@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Criacao do primeiro formulario</title>
+    <style>
+
+        /*
+        Vamos começar alinhando todos as caixas de texto na mesma posição. Para isso,
+        precisamos xar a mesma largura de cada label, e vamos aproveitar para deixá-los
+        com o texto em negrito:
+        */
+        /*
+        Denindo a propriedade display como inline-block, podemos xar a largura
+        e manter os campos ao lado dos labels, utilizando apenas block os campos cariam
+        abaixo do seu respectivo label, independente da largura denida.
+        */
+        label{
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: bold;
+            width: 90px;
+        }
+        /*.
+         Podemos fazer o mesmo para as tags input e textarea para manter todos os elementos devidamente alinhados.
+        */
+        input, textarea{
+            display: inline-block;
+            width: 200px;
+        }
+        /*
+        Além da largura, vamos xar também a altura da textarea, garantido um bom
+        espaço para se digitar um texto comprido.
+        */
+        textarea{
+            height: 100px;
+        }
+        /*
+        Hora de melhorar a aparência dos campos do formulário: vamos trocar as bordas
+        padrões dos campos, adicionar uma sombra e espaçamento interno e reduzir um
+        pouco a fonte
+        */
+        
+        input, textarea{
+            border: 1px solid #ccc;
+            box-shadow: inset 2px 2px 2px #eee;
+            font-size: 0.9em;
+            padding: 2px 5px;
+        }
+        /*
+        Pronto, alterando pequenos detalhes do estilo padrão dos elementos conseguimos chegar a um visual sutil porém bastante agradável.
+        Para compor a sombra, usamos a opção inset, que dene que a sombra será exibida dentro do elemento e não fora dele. 
+        A sombra não será exibida em navegadores que não possuem suporte a box-shadow, mas isso não impedirá ou complicará o uso do formulário,
+        garantido sua funcionalidade em navegadores sem suporte a essas propriedades do CSS 3, como versões antigas do Mozilla Firefox e do Internet Explorer.
+        */
+    </style>
+</head>
+<body>
+
+    <!--Vamos começar com a tag form, o campo de e-mail e um botão de envio:-->
+
+    <!--
+    Nosso formulário está com o method denido como post, já que pretendemos
+    criar uma mensagem de contato no site. Com o valor do atributo action com o
+    valor vazio, o navegador irá enviar os dados do formulário para o mesmo endereço
+    da página atual: se estamos em http://meusite/contato, ao clicar no botão de envio
+    os dados irão para o mesmo http://meusite/contato através do método post
+    -->
+    <form method="POST" action=''>
+        <!--Para separar o campo e botão de envio, vamos colocar os elementos do formulário dentro de parágrafos com a tag p.-->
+        <p>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="enail">
+        </p>
+        <p>
+            <label for="subject">Assunto:</label>
+            <input type="text" id="subject">
+        </p>
+        <p>
+            <label for="content">Mensagem:</label>
+            <textarea id="content"></textarea>
+        </p>
+        <button>Enviar mensagem</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+</html>

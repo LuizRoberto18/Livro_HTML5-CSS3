@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Aplicando css3 em botoes: Criando um botao completo</title>
+    <style>
+        
+        /*
+        Denimos um gradiente usando branco (#FFF) e cinza (E5E5E5), deixando o
+        cinza como cor de fundo caso não exista suporte a gradientes. Uma borda um pouco mais escura que o cinza do gradiente, 
+        levemente arredondada e alguns toques de tamanho de fonte e espaçamento para chegar ao seguinte resultado:
+        */
+        button{
+            background-color: #e5e5e5;
+            background-image: linear-gradient(to bottom, #fff, #e5e5e5);
+            border: 1px solid #aaa;
+            border-radius: 3px;
+            color: #000;
+            font-size: 0.8em;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+        /*Simples, não? É importante não usar cores muito diferentes no gradiente ou
+        deixar o botão grande demais para chamar mais atenção que os demais elementos
+        do formulário. Mas ainda temos trabalho a fazer neste botão!
+        Para car mais elegante, podemos adicionar estilos para os estados de uso do
+        botão, usando pseudo seletores como o :hover e :active, para garantir a resposta
+        visual a interação com o formulário.
+        Vamos começar pelo :hover, alterando as cores do botão.
+        */
+        button:hover{
+            background-color: #285582;
+            background-image: linear-gradient(to bottom, #3775b3, #285582);
+            border-color: #304569;
+        }
+        /*
+        Do branco sutil ao azul. Devido a essa inversão brusca, a cor do texto do botão precisa ser mudada também, assim:
+        */
+        button:hover{
+            color: #fff;
+        }
+        /*
+        Além de mudar a cor para branco, adicionamos uma sombra no texto para ajudar
+        na leitura - geralmente não precisamos usar mais do que 1 ou 2 pixels quando se trata
+        de text-shadow, basta ajustar qual o ângulo desejado. O uso do rgba aqui pode ser
+        trocado pela cor sólida - #000 - se quiser. Por último, fechamos com estilo do botão
+        com um par de sombras:
+        */
+        /*
+        A propriedade box-shadow contém duas sombras bastante distintas - a primeira
+        é uma sombra interna (atente-se ao inset) para clarear um pouco o topo do botão.
+        A segunda, em volta do elemento, para demonstrar um certo brilho ao seu redor.
+        */
+        button:hover{
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 3px #3775b3;
+            text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        /*
+        Agora, para o estado :active, vamos escurecer bastante o botão, dando a ilusão do elemento estar realmente pressionado pelo mouse.
+        */
+        button:active{
+            background-color: #204569;
+            background-image: none;
+            border-color: #1a3754;
+            box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.15);
+        }
+        /*
+        Trocamos o par de sombras por uma sombra escura interna, 
+        removemos o gradiente azul do botão e escurecemos as cores das bordas e dos fundos.  
+        */
+    </style>
+
+</head>
+<body>
+    <!--BOTAO PARA SER USADO NO FORMULARIO DE CONTATO-->
+
+    <!--
+    De volta ao formulário de contato que criamos anteriormente e utilizando o que
+    aprendemos sobre gradientes e bordas arredondadas, vamos começar com um sutil
+    botão branco:
+    -->
+    <button>enviar mensagem</button>
+
+    <!--
+    Pronto, temos os 3 principais estados do nosso botão devidamente estilizados
+    combinando as propriedades de gradiente e sombras. É muito fácil ajustar os tons
+    para alguma outra cor, como um vermelho ou verde - simplesmente alterando os
+    hexadecimais usados no código
+    -->
+
+    <!--Regras básicas para denir estados de botões-->
+        <!--
+        É muito comum ver pela internet diversos sites que aplicam as mais diversas
+        mudanças em estilos para :hover e :active, e nem sempre o resultado é agradável.
+        Tyler Galpin, um designer canadense, sugere no seu blog três regras básicas para
+        esses casos, cabendo a cada um escolher qual das três seguir.
+
+        Para o caso de :hover:
+
+        1) O botão deve car mais claro;
+        2) O botão deve car mais escuro;
+        3) O botão deve mudar de cor.
+
+        E o estado de :active:
+
+        1) O botão deve se mover 1 ou 2 pixels para baixo;
+        2) O botão deve ter o seu gradiente (caso presente) invertido;
+        3) O botão deve car ainda mais escuro.
+        
+        No exemplo anterior escolhi a terceira opção de cada um, mas você pode praticar
+        e ver os resultados ao usar alguma das outras regras sugeridas. Em seu blog, Tyler
+        também comenta sobre o que se deve evitar nestes casos e outras dicas importantes
+        sobre botões - http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/.
+        -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+</body>
+</html>

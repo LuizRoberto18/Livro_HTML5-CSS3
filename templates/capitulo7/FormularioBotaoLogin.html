@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Replicando padroes em outros cenarios</title>
+    <style>
+        /*
+        Vamos começar com CSS simples, sem utilizar gradientes ou sombras.
+        */
+        button{
+            background-color: #6da033;
+            border: 1px solid #588129;
+            color: white;
+            font-size: 0.8em;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+        /*
+        Agora, deixamos o botão um pouco mais interessante com border-radius, text-shadow e box-shadow.
+        */
+        button{
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            border-radius: 13px;
+            text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.6);
+        }
+        /*
+        O valor de 13px para o border-radius é por que o botão tem 27px de altura
+        - então usamos aproximadamente metade desse valor. Não podemos utilizar 50%
+        por que esse valor iria levar em consideração a largura do elemento, fazendo que
+        ele tomasse a forma de uma elipse. As sombras são para realçar o texto (com o
+        text-shadow preto acima do texto branco) e a borda superior
+        */
+
+        /*
+        Agora, é a vez do gradiente.
+        */
+        /*
+        Diferente do gradiente anterior, agora vamos informar as posições das cores -
+        47% e 55% . O primeiro tom de verde se mantém até 47% da altura do gradiente, e
+        o segundo tom começa a partir dos 55%. O espaço entre eles - os 8% restantes -
+        são preenchidos com a transição de uma cor para outra.
+        */
+        button{
+            background-image: linear-gradient(to top, #6da033 47%, #87c442 55%);
+        }
+
+        /*Para a versão de :hover do botão, seguindo as indicações comentadas anteriormente,
+        vamos escurecer 10% das cores do gradiente e das bordas do botão.
+        */
+        button:hover{
+            background-color: #618f2d;
+            background-image: linear-gradient(bottom, #618f2d 47%, #79b238 55%);
+            border-color: #4e7324;
+        }
+        /*
+        E o :active? Podemos reutilizar a técnica para escurecer bastante o botão que
+        usamos anteriormente, apenas ajustando as cores para o verde que está sendo aplicado agora.
+        */
+        button:active{
+            background-color: #618f2d;
+            background-image: none;
+            border-color: #405e1e;
+            box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <!--BOTAO PARA SER USADO NO FORMULARIO DE LOGIN-->
+
+    <!--
+    No formulário de login que criamos anteriormente, podemos usar as mesmas
+    técnicas do botão anterior para criar um botão verde bastante arredondado
+    -->
+        <button>Entrar no site</button>
+
+        <!--
+        E...pronto! Os mesmos padrões, mas aplicados com cores diferentes e leves mudanças de estilo, levam a elementos agradáveis e funcionais.
+        Apesar de usarmos bastante CSS 3 aqui, os botões degradam muito bem em navegadores que possam
+        não ter suporte a sombras ou gradientes. Isso se deve principalmente à presença do
+        background-color e do padding usado para manter o tamanho dos botões.
+        -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+</body>
+</html>
