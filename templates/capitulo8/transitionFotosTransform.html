@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Os efeitos rotate, scale, skew e translate em uma galeria de fotos</title>
+    <style>
+
+        /* CSS Comentado em trasnformFotos.html*/
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+        /*
+        Você se lembra da galeria de fotos dos reforços da Plataformatec que criamos anteriormente para usar a propriedade transform com a função rotate? 
+        Vamos aprimorar o efeito de scale adicionado ao :hover das fotos com uma transição - e isso será
+        absurdamente simples - basta aplicar a seguinte linha ao seletor da li:
+        */
+        li{
+            float: left;
+            margin-left: 10px;
+            position: relative;
+            transition: transform 0.2s linear;
+        }
+        span{
+            color: #153755;
+            display: block;
+            font-weight: bold;
+            margin-top: 5px;
+            text-align: center;
+        }
+     
+        li:nth-child(even){
+            transform: rotate(5deg);
+        }
+        li:nth-child(odd){
+            transform: rotate(-5deg);
+        }
+      
+        li:hover{
+            transform: scale(1.3);
+            z-index: 1;
+        }
+        
+    </style>
+</head>
+<body>
+    <!--
+        HTML comentado em transformFotos.html
+    -->
+    <!--
+    A propriedade transition permite você “animar” a mudança - ou seja, a transição -
+    entre outras propriedades dos seus elementos quando elas mudam de valor. Seja esta
+    mudança feita através de JavaScript, alterando as classes aplicadas a um elemento, ou
+    pelas mudanças causadas por pseudo seletores, como :focus e :hover.
+    Transições são uma ótima adição a interfaces já existentes, já que dependem da
+    mudança de estado existente, como containers deslizantes e modais que aparecem
+    e desaparecem das telas. Se você está acostumado a usar animações em JavaScript
+    com o jQuery, por exemplo, é possível substituir o uso de funções como slideDown
+    e fadeToggle por transições entre classes especícas para modicar a altura ou a
+    opacidade, tornando esses efeitos mais rápidos e garantido melhor qualidade aos
+    efeitos.
+    Vamos voltar a esse assunto do JavaScript mais tarde, mas primeiro vamos ver as
+    transições em ação para melhorar a experiência de interfaces que já desenvolvemos
+    anteriormente
+    -->
+
+    <!--
+    
+    -->
+    <h1>Reforços da plataformatec em 2012</h1>
+
+    <ul>
+        <li>
+            <img src="images/galdino.png" alt="carlos galdino">
+            <span>Carlos Galdino</span>
+        </li>
+        <li>
+            <img src="images/erich.png" alt="Erich Kist">
+            <span>Erich Kist</span>
+        </li>
+        <li>
+            <img src="images/lucas.png" alt="Lucas Mazza">
+            <span>Lucas Mazza</span>
+        </li>
+        <li>
+            <img src="images/rondy.png" alt="Rondy Sousa">
+            <span>Rondy Sousa</span>
+        </li>
+    </ul>
+    <!--
+    Abra a galeria no seu navegador e passe o mouse pelas fotos novamente. Incrível,
+    certo? Apenas uma linha de CSS e ganhamos essa animação - mas essa linha contém
+    bastante informação sobre o que queremos fazer. A propriedade transform é um
+    atalho para as 4 propriedades que compõe a animação, da mesma forma como usamos margin para denir 4 margens diferentes em uma propriedade só, sendo elas:
+    1) transition-property: para qual propriedade a transição será aplicada. É possível
+    utilizar o valor all para referenciar todas as propriedades do elemento;
+    2) transition-duration: A duração que a transição deve ter, em segundos;
+    3) transition-timing-function: Como a velocidade da transição deverá ser calculada, os valores mais comuns são linear, ease, ease-in, ease-out e
+    ease-in-out;
+    4) transition-delay: tempo de espera que precede a transição - geralmente omitimos essa propriedade para utilizar o valor padrão dela, 0.
+    Com isso explicado, ca fácil entender o que a nossa denição faz: aplicamos a
+    transição a propriedade transform, com 0.2s de duração e a transição deverá ser
+    executada em uma velocidade linear. Apesar de existir um mar de opções possíveis
+    que conseguimos combinar com essas propriedades, é fácil denir um padrão de valores para a duração e a velocidade
+    e repetir os valores em diversos lugares e projetos - melhor do que se preocupar constantemente em otimizar as transições para cada uso possível.
+    -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+</body>
+</html>

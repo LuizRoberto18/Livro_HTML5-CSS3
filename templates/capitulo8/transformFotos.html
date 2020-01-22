@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Os efeitos rotate, scale, skew e translate em uma galeria de fotos</title>
+    <style>
+
+        /*E um pouco de CSS para alinhar as fotos e realçar os nomes:*/
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+        li{
+            float: left;
+            margin-left: 10px;
+            position: relative;
+        }
+        span{
+            color: #153755;
+            display: block;
+            font-weight: bold;
+            margin-top: 5px;
+            text-align: center;
+        }
+        /*
+        Para dar uma descontraída na galeria, vamos girar as fotos utilizando a função rotate. 
+        Sendo que as fotos ímpares (do Carlos e do Lucas) irão para um lado e as
+        pares (do Erich e do Rondy) para outro. Utilizando o seletor de nth-child, o código
+        para isso fica bem enxuto:
+        Passando um valor negativo podemos rotacionar as imagens no sentido antihorário, 
+        enquanto valores positivos são para o sentido horário.
+        */
+        li:nth-child(even){
+            transform: rotate(5deg);
+        }
+        li:nth-child(odd){
+            transform: rotate(-5deg);
+        }
+        /*
+        Outro efeito que conseguimos adicionar facilmente é ao passar com o cursor por cima das fotos,
+        aumentar o tamanho da imagem e do texto, através do uso do scale.
+        */
+        /*
+        Desta forma, a img e o span irão voltar a posição normal e carão 30% maiores
+        e o uso do z-index vai posicionar a foto em cima das demais
+        */
+        li:hover{
+            transform: scale(1.3);
+            z-index: 1;
+        }
+        /*
+        Podemos testar outras funções como o skew e o translate aqui, mas elas não são aplicações tão
+        interessantes quanto o rotate e o scale no nosso cenário. Mas vamos conferir como elas cariam na nossa galeria.
+        */
+        /*O skew pode ser útil para desenhar cubos em 3D utilizando 3 elementos*/
+        /*li{
+            transform: skew(-10deg, -10deg);
+        }*/
+
+        /*
+        o translate é uma ótima alternativa ao uso de position: absolute junto de top e left
+        */
+        /*li:nth-child(even){
+            transform: translateY(10px);
+        }
+        li:nth-child(odd){
+            transform: translateY(-10deg);
+        }*/
+    </style>
+</head>
+<body>
+    <!--
+    Vamos começar com transformações em duas dimensões. A propriedade transform
+    aceita diversas funções de efeitos diferentes denidos pela especicação da W3C, tais
+    como:
+    1) translate: utilizado para reposicionar um elemento, movendo sua posição no eixo
+    X e Y pelos valores informados.
+    2) scale: utilizada para redimensionar um elemento, aceitando valores referentes ao
+    tamanho do elemento - scale(2) dobrará o tamanho de um elemento.
+    3) skew: permite distorcer as posições de um elemento, esticando e torcendo de
+    acordo com os valores passados.
+    4) rotate: usada para rotacionar o ângulo dos elementos.
+    5) matrix: o mais complexo de todos, permite executar uma matriz de transformações.
+    As funções translate, scale e skew possuem versões X e Y, que permitem modicar apenas um eixo e não ambos de uma vez.
+    As funções de skew e rotate trabalham com uma nova medida, graus, utilizando o suxo deg, como em transform: rotate(90deg).
+    -->
+    <h1>Reforços da plataformatec em 2012</h1>
+
+    <ul>
+        <li>
+            <img src="images/galdino.png" alt="carlos galdino">
+            <span>Carlos Galdino</span>
+        </li>
+        <li>
+            <img src="images/erich.png" alt="Erich Kist">
+            <span>Erich Kist</span>
+        </li>
+        <li>
+            <img src="images/lucas.png" alt="Lucas Mazza">
+            <span>Lucas Mazza</span>
+        </li>
+        <li>
+            <img src="images/rondy.png" alt="Rondy Sousa">
+            <span>Rondy Sousa</span>
+        </li>
+    </ul>
+    <!--
+    Em navegadores sem suporte a transform, a galeria seria exibida da forma que
+    ela foi criada inicialmente - sem efeitos nenhum. Caso você precise trabalhar com
+    navegadores sem suporte, sempre teste as suas páginas sem os efeitos de transform
+    para conrmar que elas continuam funcionais.
+    -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+</body>
+</html>
