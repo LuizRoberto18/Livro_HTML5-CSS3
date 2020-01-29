@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Começando com keFrames</title>
+    <style>
+        /*E claro, jogar um pouco de CSS em cima para acompanhar.*/
+        h1 {
+            color: #000;
+            font-size: 1.4em;
+            text-align: center;
+        }
+        /*
+        Um começo bastante simples, agora vamos adicionar a animação, que irá trabalhar a opacidade e o tamanho do elemento, utilizando transform.
+        */
+        h1{
+            animation: appear 2s 0 linear;
+        }
+
+        /*Assim como o transform e o transition são utilizados como atalhos
+        para denir várias opções de uma vez só, o animation pode compor diversos valores.
+        No nosso caso, estamos utilizando a animação chamada appear
+        (animation-name), com 2 segundos de duração (animation-duration),
+        a ser executada imediatamente (com o animation-delay em 0) e com um progresso linear
+        (animation-timing-function). Mas, em nenhum momento denimos do que é
+        composta essa animação. Precisamos denir um grupo de regras para ela utilizando
+        uma seção de @keyframes, assim:
+        */
+        @keyframes appear{
+            0%{
+                opacity: 0;
+                transform: scale(2);
+            }
+            70%{
+                opacity: 1;
+                transform: scale(1);
+            }
+            100%{
+                transform: scale(1.2);
+            }
+        }
+        /*
+        Dentro da seção de @keyframes, é possível denir pedaços de CSS que serão
+        aplicados em um ponto especíco da animação fazendo referência a porcentagem
+        do progresso - já que a duração em si é denida em outro ponto. A transição de um
+        ponto e outro será feita da mesma forma que as transições são executadas, utilizando
+        a função de progresso do animation-timing-function.
+        Aqui, estamos começando a animação com o elemento com seu tamanho dobrado (usando o scale) e sem opacidade nenhuma,
+        aos 70% da animação (com a nossa animação de 2 segundos, isso seria aos 1.4s) o elemento deve ter a sua opacidade normalizada e o tamanho regular,
+        e a animação será nalizada (ao completar os 2 segundos) com o elemento em uma escala de 1.2. Após isso, qualquer mudança presente na animação irá desaparecer e o elemento voltará ao normal. Para
+        isso, vamos levar a denição de scale(1.2) para o estilo do h1 e adicionar um transform-origin para centralizar o efeito de escala.
+        */
+
+        /*Com o controle sobre diversos pontos das animações e das diversas opções de
+        conguração, conseguimos criar efeitos que não possível apenas com transition e
+        transform, apesar da necessidade de escrever um número maior de linhas dependendo do resultado desejado
+        */
+        h1{
+            transform: scale(1.2);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--
+    Agora que já vimos sobre transform e transition e conseguimos criar alguns efeitos interessantes com eles,
+    por quê se preocupar em ver sobre a propriedade animation? A propriedade animation consegue ir além das transformações e transições
+    e permite um controle maior sobre a execução das animações, repetições
+    e até adiar os efeitos por alguns segundos. Além de diversas opções de conguração, 
+    como o animation-delay para um tempo de espera antes da animação, o
+    animation-play-state para denir se a animação está sendo executada ou não e
+    o animation-iteration-count para denir quantas vezes ela deve ser executada,
+    podemos denir diversos pontos de quebra nos efeitos que queremos fazer, e não
+    apenas o início e m como fazemos com as transições. O que permite toda essa
+    exibilidade é a denição dessas regras utilizando @keyframes, onde denimos propriedades em pontos especícos das animações, utilizando porcentagens.
+    Vamoscolocar a mão na massa e entender melhor o uso dos @keyframes.
+    -->
+    <!--
+    Nossa primeira animação será fazer uma entrada digna de cinema para um título da sua página. Para isso só vamos precisar de um h1.
+    -->
+    <h1>Bem vindo!</h1>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

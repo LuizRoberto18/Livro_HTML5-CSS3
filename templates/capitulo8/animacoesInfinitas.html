@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Animações Infinitas</title>
+    <style>
+        .loading{
+            background-color: #666;
+            border-radius: 50%;
+            font: 0/0 serif;
+            position: absolute;
+        }
+        /*Denimos um fundo escuro, bordas redondas o suciente para garantir que o
+elemento apareça como um círculo, e uma fonte zerada para esconder o texto do
+span - Mas e o tamanho? E os efeitos? Tudo isso irá na nossa animação, com as
+regras abaixo:*/
+    </style>
+</head>
+
+<body>
+
+    <!--
+    Você provavelmente já viu o universo de gifs animados que são utilizados para
+    informar quando algum processamento está feito por debaixo dos panos e que devemos esperar a página carregar algo novo em algum momento - os chamados loaders.
+    Eu co muito feliz em saber que não precisamos mais de imagens assim e podemos utilizar apenas CSS (e talvez um pouco de JavaScript),
+    para replicar esse componente e conseguir mudar tamanhos e cores com apenas algumas linhas de código. 
+    Caso você não acredite nisso, vamos criar uma versão simples de um desses componentes.
+    -->
+    <!--
+    Primeiro, precisamos apenas de um span, já que o nosso exemplo será bastante minimalista.
+    -->
+    <span class='loading' title='Carregando...'>Carregando...</span>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

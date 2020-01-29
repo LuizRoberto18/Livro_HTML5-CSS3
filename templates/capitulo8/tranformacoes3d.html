@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="normalize.css">
     <title>Transformações em 3D</title>
     <style>
+
+        /*
+        unto deles, um pouco de CSS (devidamente inspirado em exemplos anteriores)
+        para adicionar estilo aos campos e posicionar todos os elementos:
+        */
         form {
             font-size: 0.8em;
             padding: 10px;
@@ -25,6 +30,7 @@
             padding: 2px 5px;
         }
 
+        /*E claro, um pouco de CSS para esses elementos.*/
         .container {
             height: 300px;
             position: relative;
@@ -45,10 +51,18 @@
             position: absolute;
         }
 
+        /*Denimos o elemento que vai conter as seções e seus formulários, e posicionados exatamente uma em cima da outra.
+        Para poder “girar” os formulários de um lado para outro, precisamos colocar um deles de costas, certo? Então, vamos usar o
+        rotateY!
+        */
         .signup {
             transform: rotateY(180deg);
         }
 
+        /*Feito! Mas o formulário aparece invertido no fundo, o que pode deixar as coisas
+        bastante estranhas. Então precisamos esconder as “costas” do formulário, atualizado
+        um dos seletores que criamos anteriormente:
+        */
         .card section {
             backface-visibility: hidden;
             background-color: #fff;
@@ -56,25 +70,67 @@
             position: absolute;
         }
 
+        /*
+        Toda vez que algum link dentro de uma section for clicado, um dos containers
+        que adicionados anteriormente - a div .card - irá receber a classe flipped, ou irá
+        perder essa classe caso ela esteja presente. Mas não adicionamos o CSS especíco
+        dessa classe - que será bem simples:
+        */
         .card.flipped {
             transform: rotateY(180deg);
         }
 
+        /*
+        isso e tentar voltar para o formulário de login, verá que não conseguimos clicar nos
+        elementos do formulário de cadastro. Isso é porquê a div .card não está no mesmo
+        espaço das seções dos formulários - o caso do transform-style que comentei anteriormente.
+        Basta corrigir isso e podemos transitar de um formulário para outro a vontade
+        */
         .card {
             transform-style: preserve-3d;
         }
-
+        /*
+        Pronto - conseguimos mudar de um formulário a outro, mas não temos animação nenhuma - hora de uma transição entrar em jogo,
+        para o elemento .card. Uma transição de um segundo é o suciente para o nosso exemplo.
+        */
         .card {
             transition: trasform 1s;
         }
-
+        /*
+        Agora estamos chegando a algo interessante, mas ainda não ajustamos um ponto
+        importante do uso de 3D - a perspectiva. Não existe aquela ideia de profundidade e
+        que os elementos estão girando em apenas um eixo dentro do espaço denido. Para
+        determinar a “profundidade” das nossas páginas, precisamos utilizar a propriedade
+        perspective. Como os elementos que estão sendo utilizados estão relativos ao nosso
+        .container, é no CSS nele que devemos denir a profundidade do nosso plano.
+        */
         .container {
             perspective: 1000px;
         }
+
+        /*
+        500px é um valor de praxe para esse cenário. É fácil notar a diferença que isso
+        fez para o efeito que criamos - conseguimos notar os formulários girando na ilusão
+        de profundidade que criamos via CSS. Se quiser mudar o sentido da animação, basta
+        trocar o uso do rotateY por rotateX, e os formulários irão girar na horizontal.
+        */
     </style>
 </head>
 
 <body>
+
+    <!--
+    Vamos transitar entre dois formulários utilizando animações 3D - geralmente vemos isso sendo feito com efeitos mais simples,
+    mas o trabalho extra para chegar no que  vamos criar não é tão grande quanto se pode imaginar.
+    Vamos começar com o código para os formulários. Primeiro, um formulário de cadastro tradicional:
+    -->
+
+    <!--
+    Nada muito diferente do que nos já vimos anteriormente, certo? Os links de
+    “Quero me cadastrar” e Já estou cadastrado no site serão utilizados para transitar entre os formulários,
+    com uma leve ajuda de JavaScript e do jQuery. Agora, vamos colocar os nossos formulários dentro de 2 elementos - 
+    pode soar que isto é desnecessário, mas eles terão um papel importante a cumprir.
+    -->
 
     <div class="container">
         <div class="card">
@@ -99,6 +155,8 @@
                     <a href="javascript:;" class="toggle">Já se cadastrou no site</a>
                 </form>
             </section>
+
+            <!--E um formulário para login: -->
 
             <section class="signin">
                 <form>
@@ -127,6 +185,11 @@
         crossorigin="anonymous"></script>
 
     <script>
+        /*Com a propriedade backface-visibility denida como hidden, as costas dos
+        elementos (no nosso caso, das seções .signup e .signin) caram invisíveis. O que
+        precisamos agora é mudar de um formulário para outro, utilizando um pedaço de
+        código JavaScript, utilizando o jQuery:
+        */
 
         jQuery(function ($) {
             $('section').on('click', 'a', function () {

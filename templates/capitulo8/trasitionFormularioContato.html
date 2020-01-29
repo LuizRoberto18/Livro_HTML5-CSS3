@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Revisand um velho amigo</title>
+    <style>
+        /*
+       Codigo do css do Formulario comentado em FormularioComSpan.html
+        */
+
+        label {
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: bold;
+            width: 90px;
+        }
+
+        input,
+        textarea {
+            display: inline-block;
+            width: 200px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        input,
+        textarea {
+            border: 1px solid #ccc;
+            box-shadow: inset 2px 2px 2px #eee;
+            font-size: 0.9em;
+            padding: 2px 5px;
+        }
+
+        /*
+        Primeiramente, precisamos trocar a denição de display: none; das mensagens -
+        não podemos usar essa propriedade nas nossas animações, pois elementos
+        que estão escondidos desta forma não recebem os efeitos de transição quando
+        mudamos o valor dela para block. Para contornar isso, precisamos esconder as
+        mensagens de outra maneira, utilizando a propriedade opacity. Então, o CSS da
+        classe .hint cará assim:
+        */
+        .hint{
+            background-color: #fffbe4;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            /*colocamos o 'inline-block' de volta*/
+            display: inline-block;
+            font-size: 0.8em;
+            margin-left: 20px;
+            /*removemos a opacidade doelemento para escondê-lo*/
+            opacity: 0;
+            padding: 3px;
+        }
+        
+        /*
+        Alteramos a forma que escondemos e exibimos a mensagem, e agora é necessário adicionar a denição da transição a ser usada.
+        */
+        /*
+        Agora, além do opacity, a propriedade margin-left também sofrerá mudanças, e precisamos adicionar uma denição de transition para ela:
+        */
+        .hint{
+            transition: opacity 0.5s, margin-left 0.5s;
+            /*
+            Ou, utilizando o atalho do all, denindo apenas uma propriedade e uma duração.
+            transition: all 0.5s;
+            */
+        }
+        
+        /*
+        No seletor para as mensagens que são exibidas no estado de :focus dos campos,
+        vamos alterar a opacidade do elemento para exibir ele corretamente
+        */
+        /*
+        Uma transição de meio segundo, linear, na propriedade opacity. Teste novamente a exibição das mensagens e veja a transição em ação.
+        Mas ainda podemos incrementar a transição, adicionando a margem lateral na jogada. Vamos mover a
+        denição de margin-left da classe .hint para o seletor de :focus, deixando o CSS assim:
+        */
+        input:focus + .hint, textarea:focus + .hint{
+            margin-left: 20px;
+            opacity: 1s;
+        }
+        
+      .error{
+          color: red;
+          display: block;
+          font-size: 0.8em;
+          font-style: italic;
+          margin: 5px 0 0 90px;
+      }
+    </style>
+
+</head>
+
+<body>
+    <!--Codigo do Formulario comentado em FormularioComSpan.html-->
+
+    <!--
+    Vamos voltar ao formulário de contato criado no capítulo anterior - onde as mensagens de ajuda são exibidas conforme os campos recebem foco - e adicionar transições as mensagens.
+    Diferente do exemplo anterior, precisamos fazer alguns ajustes ao estilo do formulário e podemos combinar transições diferentes para criar um efeito melhor
+    -->
+    <form method="POST" action=''>
+        <p>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="enail" autofocus>
+            <span class="hint">por exemplo, seunome@dominio.com</span>
+            <span class="error"> Preenchao seu e-mail corretamente</span>
+        </p>
+        <p>
+            <label for="subject">Assunto:</label>
+            <input type="text" id="subject">
+            <span class="hint">nos diga qual e o seu problema ou ideia</span>
+            <span class="error"> Preenchao com um assunto corretamente</span>
+        </p>
+        <p>
+            <label for="content">Mensagem:</label>
+            <textarea id="content"></textarea>
+            <span class="hint">escreva a sua mensagem em ate 500 caracteres</span>
+            <span class="error"> Preenchao seu texto corretamente</span>
+        </p>
+        <button>Enviar mensagem</button>
+    </form>
+    <!--
+        Testando novamente o formulário, podemos ver a nova versão da nossa transição,
+        cuja intenção é demonstrar que a mensagem está “entrando” na interface do
+        usuário, e saindo quando outro campo recebe foco. Apesar das mudanças necessárias
+        no código escrito anteriormente, conseguimos adicionar as transições no formulário
+        sem perder o comportamento antigo.
+    -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
