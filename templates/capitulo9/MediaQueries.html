@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Media Queries</title>
+    <style>
+        /*
+        Outra ferramenta do Responsive Web Design são os media queries -
+        uma regra especíca para aplicar um bloco de CSS caso a regra seja atendida. Similar ao uso de CSS
+        para estilos especícos de impressão (seção 4.8), você também pode indicar regras
+        associadas ao tamanho, orientação ou a resolução de tela.
+        */
+        @media only screen and (min-device-width : 320px) and (min-device-width : 480px) {
+            /*
+            Esta regra será aplicada em
+            aparelhos com uma largura de 320px a 480px,
+            o que atende a maioria de smartphones.
+            */
+        }
+
+        @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+            /*
+            Além de verificar a largura do dispositivo,
+            você pode conferir a orientação, utilizando
+            "landscape" ou "portrait".
+            */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--
+        Utilizando media queries, você pode denir estilos especícos para tamanhos
+        diferentes, o que é melhor do que focar em um tipo de dispositivo especíco.
+        Diversos modelos diferentes de smartphones podem ser atendidos por um mesmo media
+        query, o que também ajuda a atender novos modelos que irão surgir no futuro.
+
+    -->
+    <!--
+        Da mesma forma que um CSS de impressão, você pode sobrescrever denições
+        globais de CSS para adequar a sua página para tamanhos diferentes. Assim você
+        consegue reordenar elementos, reduzir o tamanho de imagens ou exibir elementos
+        alternativos para melhorar a experiência de uso dos seus usuários.
+
+        O site Media Queries (http://mediaqueri.es/) possui uma coletânea de sites que
+        possuem diversos formatos para smartphones e tablets, uma ótima referência para se
+        inspirar com outros trabalhos.
+
+    -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -14,10 +14,47 @@
             font: 0/0 serif;
             position: absolute;
         }
-        /*Denimos um fundo escuro, bordas redondas o suciente para garantir que o
-elemento apareça como um círculo, e uma fonte zerada para esconder o texto do
-span - Mas e o tamanho? E os efeitos? Tudo isso irá na nossa animação, com as
-regras abaixo:*/
+        /*
+        Denimos um fundo escuro, bordas redondas o suciente para garantir que o
+        elemento apareça como um círculo, e uma fonte zerada para esconder o texto do
+        span - Mas e o tamanho? E os efeitos? Tudo isso irá na nossa animação, com as
+        regras abaixo:
+        */
+        @keyframes pulse{
+            0%{
+                width: 0;
+                height: 0;
+                opacity: 1;
+                top: 50px;
+                left: 50px;
+            }
+            100%{
+                width: 30px;
+                height: 30px;
+                opacity: 0;
+                top: 35px;
+                left: 35px;
+            }
+        }
+        /*
+        Enquanto a nossa esfera vai aumentando de tamanho - de 0 a 35 px - ela vai
+        sendo apagada pela mudança de opacidade. As mudanças de top e left garantem
+        que ela cará centralizada no seu lugar e não irá se mover por ai devido a mudança de
+        tamanho. Para utilizar essa animação pulse no nosso loader com o efeito desejado,
+        precisamos denir que ele será animado para sempre.
+        Sim, para sempre. Assim:
+        */
+        .loading{
+            animation: pulse 1.5s infinite;
+        }
+        /*
+        Podemos usar infinite como um valor para o animation-iteration-count, e
+        a animação será executada para sempre - podemos apenas adicionar um pouco de
+        JavaScript para esconder e exibir o loader quando for necessário.
+         Caso seja necessário mudar a cor ou aumentar o tamanho para adequar a interfaces diferentes, só
+        precisamos alterar algumas linhas de CSS, sem precisar criar imagens novas em um
+        editor e executar mais requisições HTTP para servir as imagens.
+        */
     </style>
 </head>
 

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Mixins</title>
+    <style>
+        /*
+        Os mixins do Stylus permitem que você escreva CSS sem se preocupar
+        se está usando um mixin ou uma propriedade comum, como no caso abaixo
+        onde o 'transform' cria todas as variações com os prefixos necessários.
+        Caso você não precise mais dos prefixos '-moz' ou '-webkit',
+        por exemplo, basta alterar o mixin e gerar o seu arquivo '.css' novamente.
+     */
+        /*transform() {
+            -moz-transform:arguments;
+            -ms-transform:arguments;
+            -o-transform:arguments;
+            -webkit-transform:arguments;
+            transform:arguments;
+        }*/
+
+        .slider {
+            transform: width 0.2s linear;
+        }
+
+        .popup {
+            transform: opacity 0.5s;
+        }
+
+        /*
+        Com esta denição de mixin, o Stylus consegue gerar o seguinte código: 
+        */
+        .slider {
+            -moz-transform: width 0.2s linear;
+            -ms-transform: width 0.2s linear;
+            -o-transform: width 0.2s linear;
+            -webkit-transform: width 0.2s linear;
+            transform: width 0.2s linear;
+        }
+
+        .popup {
+            -moz-transform: opacity 0.5s;
+            -ms-transform: opacity 0.5s;
+            -o-transform: opacity 0.5s;
+            -webkit-transform: opacity 0.5s;
+            transform: opacity 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--
+        Mixins trazem muita exibilidade a sua folha de estilo para repetir denições
+        similares, executar cálculos ou gerar prexos especícos sem repetir as mesmas de-
+        nições diversas vezes.
+    -->
+
+    <!--
+
+    -->
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

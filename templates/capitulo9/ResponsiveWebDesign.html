@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <title>O que é “Responsive Web Design” e porquê você deve se preocupar</title>
+    <style>
+        
+        /*
+        Ethan Marcotte criou o termo Responsive Web Design em um artigo escrito no
+        site A List Apart[5], que então se tornou um livro, que é referência no assunto. A
+        combinação de elementos uídos, com dimensões relativas ao espaço disponível no
+        aparelho do usuário, e regras especícas para denir estilos especícos para tamanhos de tela diferentes 
+        e funcionalidades diferentes (como, por exemplo, a resolução fantástica do iPhone 4 e do iPad de 3ª geração).
+        Sites responsivos adequam os seus elementos e o seu comportamento para cenários, 
+        como disponibilizando uxo de navegação que se adequará ao tamanho da tela
+        utilizada ou mudando as interações do usuário caso ele use um dispositivo sensível
+        a toque ou não. Além de precisar identicar o tamanho, capacidade e funcionalidades disponíveis,
+        é importante que a disposição dos elementos seja exível o bastante para se adequar a qualquer dispositivo.
+        O primeiro passo para se começar a trabalhar com designs responsivos é fazer a transição de elementos xos - 
+        de dimensões xadas em px - para elementos uídos - que se baseiam em porcentagens e em. Desta forma, 
+        a sua página consegue se expandir ou diminuir de acordo com a largura disponível,
+        em vez de se xar em algo similar a 960px de largura máxima.
+        A conversão de tamanhos xos para uídos é feita com base em uma fórmula
+        bastante simples: "tamanho fixo"/ "contexto"= "tamanho fluído". Com ela
+        você consegue converter dimensões em px para porcentagens (para larguras) ou em (para fontes), assim: 
+        */
+        body{
+            /*Utilizando o tamanho padrao, geralmente 16px*/
+           font: normal 100% Helvetica, Arial, sans-serif; 
+        }
+
+        h1{
+            font-size: 1.5em; /* 24px / 16px = 1.5em*/
+        }
+        /*A princípio, esta denição terá o mesmo efeito que denir o tamanho da fonte do
+        h1 como 24px. Porém, em dispositivos que o tamanho padrão de fonte seja diferente,
+        como em smartphones, font-size do elemento irá acompanhar esta 
+        mudança de tamanho: em um dispositivo que utilize 12px a fonte do elemento terá 18px de altura,e não 24px.
+        Esta mesma abordagem pode ser usada para denir as regras do seu grid -
+        tornando-o um grid uído - e o espaçamento entre elementos. Desta forma você
+        consegue fazer os seus layouts acompanharem as diferenças de largura entre diversos
+        dispositivos, e então você pode tratar as peculiaridades de cada contexto utilizando
+        media queries.
+        */
+    </style>
+</head>
+
+<body>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
